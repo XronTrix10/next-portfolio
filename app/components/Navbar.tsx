@@ -59,13 +59,12 @@ const Navbar = () => {
           <div className="hidden w-full md:flex md:w-auto " id="navbar-default">
             <ul className="text-md font-medium flex flex-col p-4 md:p-0 mt-4 border md:flex-row md:space-x-8 md:mt-0 md:border-0 text-white">
               {navItems.map((navItem, index) => (
-                <li>
+                <li key={index}>
                   <CustomLink
                     activeSection={activeSection}
                     handleSetActive={handleSetActive}
                     title={navItem.title}
                     to={navItem.link}
-                    key={index}
                   />
                 </li>
               ))}
