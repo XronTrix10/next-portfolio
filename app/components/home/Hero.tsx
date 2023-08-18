@@ -1,24 +1,45 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { Buttons } from "../ui/Styles";
+import { motion } from "framer-motion";
 
 function Hero() {
   return (
     <section className="bg-transparent w-full" id="hero">
-      <div className="text-left px-10 sm:px-16 md:px-[15%] pt-[65%] sm:pt-[40%] md:pt-[22%] lg:pt-[15%] min-h-screen">
+      <div className="text-left px-10 sm:px-16 md:px-[15%] pt-[65%] sm:pt-[40%] md:pt-[22%] lg:pt-[15%] 2xl:pt-[17%] min-h-screen">
         <div className="my-2 mb-8 lg:mb-5">
           <h2 className="md:text-lg 2xl:text-xl">Hi, I'am</h2>
-          <h1 className="text-[3.5rem] md:text-[5rem] 2xl:text-[7rem]">
-            <span className="text-gray-500 xron-shade hover:text-gray-400">Xron </span>
+          <motion.h1
+            initial={{ opacity: 0, x: -100 }} // Initial animation values
+            animate={{ opacity: 1, x: 0 }} // Target animation values
+            transition={{ duration: 0.5 }} // Animation duration
+            className="text-[3.5rem] md:text-[5rem] 2xl:text-[7rem]"
+          >
+            <span className="text-gray-500 xron-shade hover:text-gray-400">
+              Xron{" "}
+            </span>
             <span className="red-text trix-shade">Trix</span>
-          </h1>
+          </motion.h1>
         </div>
-        <div className="my-7">
+
+        <motion.div
+          initial={{ opacity: 0, x: -100 }} // Initial animation values
+          animate={{ opacity: 1, x: 0 }} // Target animation values
+          transition={{ duration: 0.7, delay: 0.7 }} // Animation duration
+          className="my-7"
+        >
           <h2 className="md:text-lg 2xl:text-xl mb-12">
             I am a learner, cyber security enthusiast, script kiddie, coder and
             technology lover
           </h2>
-        </div>
+        </motion.div>
+        <motion.div
+        initial={{ opacity: 0, x: -100 }} // Initial animation values
+        animate={{ opacity: 1, x: 0 }} // Target animation values
+        transition={{ duration: 0.7, delay: 1.4 }} // Animation duration
+        >
         <Link href="#contact" className={Buttons}>
           Connect{" "}
           <svg
@@ -40,6 +61,7 @@ function Hero() {
           </svg>
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
         </Link>
+        </motion.div>
       </div>
     </section>
   );

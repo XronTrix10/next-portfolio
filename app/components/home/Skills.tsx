@@ -1,5 +1,9 @@
+"use client";
+
 import React from "react";
 import { H2Style, H3Style, Load, Done } from "../ui/Styles";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const skills = [
   {
@@ -96,6 +100,11 @@ const skills = [
 ];
 
 function Skills() {
+  const [ref, inView, entry] = useInView({
+    triggerOnce: true, // Animation will trigger only once when it comes into view
+    threshold: 0.2, // Percentage of element visible to trigger the animation
+  });
+
   return (
     <section
       className="bg-transparent w-full min-h-screen text-center my-6"
@@ -107,11 +116,14 @@ function Skills() {
         The Skills That I Learnt and Still Learning
       </h3>
 
-      <div className="flex flex-wrap gap-8 justify-center">
+      <div ref={ref} className="flex flex-wrap gap-8 justify-center">
         {skills.map((skill, index) => (
-          <div
+          <motion.div
             key={index}
-            className="w-[65%] sm:w-[35%] xl:w-[20%]  max-w-sm overflow-hidden border-2 border-gray-500 rounded-xl p-5 py-7 hover:shadow-[0px_8px_30px_0px_gray]"
+            initial={{ opacity: 0, scale: 1.5 }} // Initial animation values
+            animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 1.5 }} // Target animation values
+            transition={{ duration: 0.6, delay: index * 0.6 }} // Animation duration
+            className="w-[65%] sm:w-[35%] xl:w-[20%] max-w-sm overflow-hidden border-2 border-gray-500 rounded-xl p-5 py-7 shadow-[0px_5px_30px_0px_gray] md:shadow-none hover:shadow-[0px_8px_30px_0px_gray]"
           >
             <div className="px-6 py-4 text-center">
               <div className="font-bold text-xl red-text mb-5">
@@ -128,7 +140,7 @@ function Skills() {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 

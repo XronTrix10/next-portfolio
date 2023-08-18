@@ -25,7 +25,7 @@ export default function ScrollButton() {
   }, [showScroll]);
 
   return (
-    <div className="fixed bottom-8 right-8" id="scrollbtn">
+    <div className="fixed bottom-6 right-6 z-20" id="scrollbtn">
       {showScroll && (
         <button
           onClick={scrollToTop}
@@ -38,9 +38,9 @@ export default function ScrollButton() {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="lucide lucide-chevrons-up"
           >
             <path d="m17 11-5-5-5 5" />

@@ -41,7 +41,7 @@ const Navbar = () => {
   return (
     <header>
       <nav className="backdrop-blur-lg fixed top-0 z-50 w-full">
-        <div className="container flex flex-wrap items-center justify-between mx-auto p-4 px-10 md:px-[15%]">
+        <div className="flex flex-wrap items-center justify-between mx-auto p-4 px-10 md:px-[15%]">
           <Link
             activeClass="active"
             to="hero"
@@ -52,7 +52,7 @@ const Navbar = () => {
               activeSection === "hero"
             } cursor-pointer flex title-font  font-bold items-center  mb-0`}
           >
-            <Image src="/icon.png" alt="Flowbite Logo" width="40" height="70" />
+            <Image src="/icon.png" alt="XronTrix Logo" width="40" height="70" />
           </Link>
 
           <MoboNav />

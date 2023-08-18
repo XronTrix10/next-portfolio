@@ -4,6 +4,7 @@ import Contact from "./components/home/Contact";
 import Hero from "./components/home/Hero";
 import ScrollButton from "./components/home/ScrollButton";
 import Skills from "./components/home/Skills";
+import Projects from "./components/home/Projects";
 import Background from "./components/ui/Background";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <About />
       <Skills />
+      <Projects />
       <Certificates />
       <Contact />
 

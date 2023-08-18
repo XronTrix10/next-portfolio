@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Buttons, H2Style, H3Style } from "../ui/Styles";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const testimonialsData = [
   {
@@ -29,6 +31,11 @@ const testimonialsData = [
 ];
 
 const TestimonialSlider = () => {
+  const [ref, inView, entry] = useInView({
+    triggerOnce: true, // Animation will trigger only once when it comes into view
+    threshold: 0.5, // Percentage of element visible to trigger the animation
+  });
+
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
 
   const nextTestimonial = () => {
@@ -51,14 +58,20 @@ const TestimonialSlider = () => {
 
   return (
     <section id="certificates">
-      <div className="py-[10rem] w-full min-h-screen text-center">
+      <div ref={ref} className="py-[10rem] w-full min-h-screen text-center">
         <h2 className={H2Style}>Certificates</h2>
         <h3 className={`${H3Style} px-10 mx-10`}>
           The Skills and Certificates I Acquired
         </h3>
 
-        <div className="container mx-auto px-1 flex flex-row place-content-center my-6">
-          <button
+        <div className="container px-1 flex flex-row place-content-center my-6">
+          <motion.button
+            initial={{ opacity: 0, x: 100 }} // Initial animation values
+            animate={{
+              opacity: inView ? 1 : 0,
+              x: inView ? 0 : 100,
+            }} // Target animation values
+            transition={{ duration: 0.6, delay: 0.7 }} // Animation duration
             className="text-white/70 hover:text-white text-[4rem] md:px-4 py-2 md:mx-[4rem]"
             onClick={prevTestimonial}
           >
@@ -76,15 +89,24 @@ const TestimonialSlider = () => {
             >
               <path d="m15 18-6-6 6-6" />
             </svg>
-          </button>
+          </motion.button>
 
-          <div className="w-[70%] md:w-1/3 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.6, y: 100 }} // Initial animation values
+            animate={{
+              opacity: inView ? 1 : 0,
+              scale: inView ? 1 : 0.6,
+              y: inView ? 0 : 100,
+            }} // Target animation values
+            transition={{ duration: 0.7 }} // Animation duration
+            className="w-[70%] md:w-1/3 text-center"
+          >
             {testimonialsData.map((testimonial, index) => (
               <div
                 key={index}
                 className={`${
                   index === currentTestimonialIndex ? "block" : "hidden"
-                } p-6 rounded-lg mb-9`}
+                } p-6 rounded-lg mb-6`}
               >
                 <div className="w-auto grid place-content-center my-8">
                   <Image
@@ -124,9 +146,15 @@ const TestimonialSlider = () => {
                 <path d="M19 17V5a2 2 0 0 0-2-2H4" />
               </svg>
             </Link>
-          </div>
+          </motion.div>
 
-          <button
+          <motion.button
+            initial={{ opacity: 0, x: -100 }} // Initial animation values
+            animate={{
+              opacity: inView ? 1 : 0,
+              x: inView ? 0 : -100,
+            }} // Target animation values
+            transition={{ duration: 0.6, delay: 0.7 }} // Animation duration
             className="text-white/70 hover:text-white text-[4rem] md:px-4 py-2 md:mx-[4rem]"
             onClick={nextTestimonial}
           >
@@ -144,7 +172,7 @@ const TestimonialSlider = () => {
             >
               <path d="m9 18 6-6-6-6" />
             </svg>
-          </button>
+          </motion.button>
         </div>
       </div>
     </section>

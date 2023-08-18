@@ -14,12 +14,12 @@ export const navItems = [
     title: "About",
   },
   {
-    link: "projects",
-    title: "Projects",
-  },
-  {
     link: "skills",
     title: "Skills",
+  },
+  {
+    link: "projects",
+    title: "Projects",
   },
   {
     link: "certificates",
@@ -34,7 +34,7 @@ export const navItems = [
 export function MoboNav() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="red-text outline-none md:hidden">
+      <DropdownMenuTrigger className="red-text outline-none md:hidden rotate-45 focus:rotate-0">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="30"
@@ -54,7 +54,7 @@ export function MoboNav() {
         </svg>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="bg-gray-600 text-white mt-5 shadow-md border-none p-3"
+        className="bg-gray-600 text-white mt-5 shadow-sm border-none p-2 rounded-lg"
         align="end"
       >
         {navItems.map((navItem, index) => (

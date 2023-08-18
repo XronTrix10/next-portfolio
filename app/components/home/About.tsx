@@ -1,15 +1,31 @@
+"use client";
+
 import React from "react";
 import { Buttons, H2Style, H3Style } from "../ui/Styles";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 function About() {
+  const [ref, inView, entry] = useInView({
+    triggerOnce: true, // Animation will trigger only once when it comes into view
+    threshold: 0.5, // Percentage of element visible to trigger the animation
+  });
+
   return (
     <section className="bg-transparent w-full md:min-h-screen mb-16" id="about">
-      <div className="text-center py-[8rem] px-12 md:px-16 lg:px-[18rem] xl:px-[25rem]">
-        
+      <div
+        ref={ref}
+        className="text-center py-[8rem] px-12 md:px-16 lg:px-[18rem] xl:px-[25rem]"
+      >
         <h2 className={H2Style}>About Me</h2>
         <h3 className={H3Style}>My introduction</h3>
 
-        <div className="md:text-lg 2xl:text-xl mb-12 my-4">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.6 }} // Initial animation values
+          animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.6 }} // Target animation values
+          transition={{ duration: 0.7 }} // Animation duration
+          className="md:text-lg 2xl:text-xl mb-12 my-4"
+        >
           <p>
             I chose to specialize in cybersecurity by passion, and also after
             being hacked once in social media ( Thanks to the hacker ). Except
@@ -21,7 +37,7 @@ function About() {
             Outside of my proffessional life, I love gaming, table tennis, body
             building, watching cartoons, photography and EDM.
           </p>
-        </div>
+        </motion.div>
         <a href="CV/cv.txt" download="" className={Buttons}>
           Download CV{" "}
           <svg
