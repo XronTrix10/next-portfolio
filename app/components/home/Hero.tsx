@@ -10,7 +10,7 @@ function Hero() {
     <section className="bg-transparent w-full" id="hero">
       <div className="text-left px-10 sm:px-16 md:px-[15%] pt-[65%] sm:pt-[40%] md:pt-[22%] lg:pt-[15%] 2xl:pt-[17%] min-h-screen">
         <div className="my-2 mb-8 lg:mb-5">
-          <h2 className="md:text-lg 2xl:text-xl">Hi, I'am</h2>
+          <h2 className="md:text-lg 2xl:text-xl">Hi, I&apos;am</h2>
           <motion.h1
             initial={{ opacity: 0, x: -100 }} // Initial animation values
             animate={{ opacity: 1, x: 0 }} // Target animation values

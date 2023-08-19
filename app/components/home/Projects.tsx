@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { H2Style, H3Style } from "../ui/Styles";
+import { Buttons, H2Style, H3Style } from "../ui/Styles";
 import { motion } from "framer-motion";
 import fetchRepoData from "../server/fetchRepoMeta";
 import Link from "next/link";
@@ -49,7 +49,7 @@ const Projects = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 key={index}
-                className="bg-gray-900 text-white rounded-lg shadow-md p-6"
+                className="bg-black border-2 border-gray-600 text-white rounded-lg shadow-md p-6"
               >
                 <Link href={`/projects/${project}`}>
                   {repoData[index] ? ( // Check if repoData[index] is available
@@ -69,6 +69,10 @@ const Projects = () => {
               </motion.div>
             ))}
           </div>
+        </div>
+        <div className="grid place-content-center center py-8">
+        <Link className={Buttons} href="/projects">View in Details</Link>
+
         </div>
       </div>
     </section>
