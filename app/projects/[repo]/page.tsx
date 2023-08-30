@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Buttons } from "@/app/components/ui/Styles";
 import Navbar from "@/app/components/Navbar";
 import { fetchMeta } from "@/app/components/server/fetchRepoMeta";
-import Notproject from "./Notproject";
+import Notfound from "./Notfound";
 
 export function generateMetadata({ params }: { params: { repo: string } }) {
   return {
@@ -52,9 +52,9 @@ const Page = async ({ params }: { params: { repo: string } }) => {
   }
 
   return (
-    <main className="w-full bg-black text-white py-20">
+    <main className="w-full bg-black text-white">
       {meta !== null ? (
-        <>
+        <div className="py-20">
           <Navbar land={""}></Navbar>
 
           <div className="min-h-screen px-6 md:px-[15%] shadow-inner">
@@ -119,9 +119,9 @@ const Page = async ({ params }: { params: { repo: string } }) => {
               </Link>
             </div>
           </div>
-        </>
+        </div>
       ) : (
-        <Notproject />
+        <Notfound text={"I Don't Have the Project that you are looking for"} />
       )}
     </main>
   );
