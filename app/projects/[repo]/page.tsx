@@ -14,7 +14,7 @@ export function generateMetadata({ params }: { params: { repo: string } }) {
   };
 }
 
-export const projects = [
+const projects: string[] = [
   "Telegram-Leecher",
   "Python-Passwd",
   "esp8266-BTS7960B",
