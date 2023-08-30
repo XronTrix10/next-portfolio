@@ -31,7 +31,7 @@ function Hero() {
           className="my-7"
         >
           <h2 className="md:text-lg 2xl:text-xl mb-12">
-            I am a learner, cyber security enthusiast, script kiddie, coder and
+            I am a self learner, resolute, security enthusiast, script kiddie, coder and
             technology lover
           </h2>
         </motion.div>

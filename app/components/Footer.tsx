@@ -7,10 +7,10 @@ const Footer = () => {
     <footer className="text-white body-font backdrop-blur-lg bg-black">
       <div className="container md:px-[15%] py-6 md:py-10 mx-auto flex items-center sm:flex-row flex-col font-thin">
         <Link
-          href="#"
+          href="/"
           className="hidden md:flex title-font font-medium items-center md:justify-start justify-center"
         >
-          <Image src="/icon.png" alt="Flowbite Logo" width="30" height="60" />
+          <Image src="/icon.png" alt="XronTrix Logo" width="30" height="60" />
           <span className="ml-3 text-xl">Xron Trix</span>
         </Link>
         <p className="text-gray-500 text-sm sm:ml-4 sm:pl-4 sm:border-l-2 sm:py-2 sm:mt-0 mt-4">

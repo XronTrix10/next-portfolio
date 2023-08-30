@@ -28,14 +28,13 @@ function About() {
         >
           <p>
             I chose to specialize in cybersecurity by passion, and also after
-            being hacked once in social media ( Thanks to the hacker ). Except
-            college studies, I spend most of the time in practice of logic
-            building in several languages, learning about linux and pen testing.
-            I am a self and fast learner. My goal is to be a Red-Teamer.
+            being hacked once in social media ( Thanks to that hacker ). Except
+            college studies, I spend most of the time on crazy things in my brain, learning new stuff.
+            I am a self and fast learner. 
           </p>
           <p className="mt-5">
             Outside of my proffessional life, I love gaming, table tennis, body
-            building, watching cartoons, photography and EDM.
+            building, watching cartoons and photography. My music taste is EDM.
           </p>
         </motion.div>
         <a href="CV/cv.txt" download="" className={Buttons}>

@@ -5,6 +5,7 @@ import { Buttons, H2Style, H3Style } from "../ui/Styles";
 import { motion } from "framer-motion";
 import fetchRepoData from "../server/fetchRepoMeta";
 import Link from "next/link";
+import Loading from "./Loading";
 
 export const projects = [
   "Telegram-Leecher",
@@ -14,6 +15,8 @@ export const projects = [
   "Pentesting-Notes",
   "next-portfolio",
 ];
+
+
 
 type RepositoryData = {
   name: string;
@@ -25,6 +28,15 @@ type RepositoryData = {
 
 const Projects = () => {
   const [repoData, setRepoData] = useState<RepositoryData[]>([]);
+
+  function getShortDescription(index: number): string {
+    const words = repoData[index].description.split(" ");
+    if (words.length > 8) {
+      const first8Words = words.slice(0, 8).join(" ");
+      return first8Words + "....";
+    }
+    return repoData[index].description;
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,30 +61,47 @@ const Projects = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 key={index}
-                className="bg-black border-2 border-gray-600 text-white rounded-lg shadow-md p-6"
+                className="bg-black border-2 border-gray-600 text-white rounded-lg shadow-md p-6 hover:shadow-[0px_5px_15px_0px_gray]"
               >
                 <Link href={`/projects/${project}`}>
                   {repoData[index] ? ( // Check if repoData[index] is available
-                    <div>
-                      <h4 className="text-xl font-semibold mb-2 red-text">
-                        {repoData[index].name}
-                      </h4>
-                      <p className="text-gray-200 mb-4">
-                        {repoData[index].description}
-                      </p>
-                      <p className="text-gray-400">Click to View</p>
+                    <div className="flex h-40 flex-col justify-between">
+                      <div className="">
+                        <h4 className="text-xl font-semibold mb-2 red-text">
+                          {repoData[index].name}
+                        </h4>
+                        <p className="text-gray-200 text-md">
+                          {getShortDescription(index)}
+                        </p>
+                      </div>
+                      <div className="bottom-0 flex flex-row justify-between">
+                        <p className="text-gray-400 left-0 hover:text-white">
+                          Click to View
+                        </p>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20"
+                          height="20"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          className="lucide lucide-github text-gray-400 right-0 hover:text-white"
+                        >
+                          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                          <path d="M9 18c-4.51 2-5-2-7-2" />
+                        </svg>
+                      </div>
                     </div>
                   ) : (
-                    <p className="text-white text-md">Loading...</p> // Display a loading message while data is being fetched
+                    <Loading />
                   )}
                 </Link>
               </motion.div>
             ))}
           </div>
-        </div>
-        <div className="grid place-content-center center py-8">
-        <Link className={Buttons} href="/projects">View in Details</Link>
-
         </div>
       </div>
     </section>

@@ -6,7 +6,7 @@ import CustomLink from "./ui/nav-items/CustomLink";
 import { Link } from "react-scroll";
 import { navItems } from "./ui/nav-items/MoboNav";
 
-const Navbar = () => {
+const Navbar = (props: { land: string }) => {
   const [navbarBg, setNavbarBg] = useState(false);
   const [activeSection, setActiveSection] = useState("");
 
@@ -38,10 +38,20 @@ const Navbar = () => {
     setActiveSection(to);
   };
 
+  function padding() {
+    return props.land === "home" ? "px-10" : "px-6";
+  }
+
+  function bgcolor() {
+    return props.land === "home" ? "" : "bg-black/20";
+  }
+
   return (
     <header>
-      <nav className="backdrop-blur-lg fixed top-0 z-50 w-full">
-        <div className="flex flex-wrap items-center justify-between mx-auto p-4 px-10 md:px-[15%]">
+      <nav className={`backdrop-blur-lg ${bgcolor()} fixed top-0 z-50 w-full`}>
+        <div
+          className={`flex flex-wrap items-center justify-between mx-auto p-4 ${padding()} md:px-[15%]`}
+        >
           <Link
             activeClass="active"
             to="hero"
@@ -54,22 +64,35 @@ const Navbar = () => {
           >
             <Image src="/icon.png" alt="XronTrix Logo" width="40" height="70" />
           </Link>
-
-          <MoboNav />
-          <div className="hidden w-full md:flex md:w-auto " id="navbar-default">
-            <ul className="text-md font-medium flex flex-col p-4 md:p-0 mt-4 border md:flex-row md:space-x-8 md:mt-0 md:border-0 text-white">
-              {navItems.map((navItem, index) => (
-                <li key={index}>
-                  <CustomLink
-                    activeSection={activeSection}
-                    handleSetActive={handleSetActive}
-                    title={navItem.title}
-                    to={navItem.link}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
+          {props.land === "home" ? (
+            <div>
+              <MoboNav />
+              <div
+                className="hidden w-full md:flex md:w-auto "
+                id="navbar-default"
+              >
+                <ul className="text-md font-medium flex flex-col p-4 md:p-0 mt-4 border md:flex-row md:space-x-8 md:mt-0 md:border-0 text-white">
+                  {navItems.map((navItem, index) => (
+                    <li key={index}>
+                      <CustomLink
+                        activeSection={activeSection}
+                        handleSetActive={handleSetActive}
+                        title={navItem.title}
+                        to={navItem.link}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <a
+              href="/"
+              className="text-md font-medium text-white hover:text-red-600"
+            >
+              Home
+            </a>
+          )}
         </div>
       </nav>
     </header>

@@ -1,5 +1,4 @@
 import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
 import "./globals.css";
 
 import { Russo_One } from "next/font/google";
@@ -19,7 +18,6 @@ export default function RootLayout({
   return (
     <html className={inter.className} lang="en">
       <body>
-        <Navbar />
         {children}
         <Footer />
       </body>
