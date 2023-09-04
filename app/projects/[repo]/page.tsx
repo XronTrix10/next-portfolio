@@ -128,11 +128,11 @@ const Page = async ({ params }: { params: { repo: string } }) => {
             <h1 className="text-center my-10 red-text text-xl">
               Showing README of {params.repo}
             </h1>
-            <div className="bg-[#18181886] rounded-xl p-4 md:p-10 text-center md:text-justify">
+            <div className="bg-[#18181886] rounded-xl p-4 md:p-16 md:text-justify">
               {/* <Getmarkdown repo={params.repo} /> */}
               <article
                 dangerouslySetInnerHTML={{ __html: html }}
-                className="prose prose-sm md:prose-md prose-li:font-thin prose-headings:font-thin prose-strong:font-thin prose-img:rounded-lg prose-headings:text-white text-gray-200 prose-a:text-indigo-500 prose-li:marker:text-white prose-li:text-left prose-blockquote:text-white prose-code:text-gray-400 prose-pre:bg-black prose-strong:text-white overflow-hidden"
+                className="max-w-none prose prose-sm md:prose-md prose-li:font-thin prose-headings:font-thin prose-strong:font-thin prose-img:rounded-lg prose-headings:text-white text-gray-200 prose-a:text-indigo-500 prose-li:marker:text-white prose-li:text-left prose-blockquote:text-white prose-code:text-gray-400 prose-pre:bg-black prose-strong:text-white overflow-hidden"
               />
             </div>
             <div className="text-center m-9">
