@@ -1,6 +1,6 @@
 import Footer from "./components/Footer";
 import { ToastContainer } from "./components/ui/ReactToast";
-import "react-toastify/dist/ReactToastify.min.css";
+import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 
 import { Russo_One } from "next/font/google";

@@ -65,9 +65,7 @@ function Contact() {
             pauseOnHover: true,
             draggable: true,
           });
-          // toast.error("Couldn't Send Email !");
         } else {
-          // toast.success("Email Sent Successfully");
           toast.update(id, {
             render: "Email Sent Successfully",
             type: "success",
@@ -84,7 +82,6 @@ function Contact() {
           setText("");
         }
 
-        console.log("Got response: ", res);
       } catch (error) {
         console.log("Got Error:", error);
       }
@@ -149,6 +146,7 @@ function Contact() {
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-900 border border-red-600 rounded-lg py-2 md:py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               id="username"
+              autoComplete="true"
               type="email"
               value={email}
               onChange={({ target }) => setEmail(target.value)}
