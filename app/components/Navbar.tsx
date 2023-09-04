@@ -58,7 +58,7 @@ const Navbar = (props: { land: string }) => {
               activeSection === "hero"
             } cursor-pointer flex title-font  font-bold items-center  mb-0`}
           >
-            <Image src="/icon.png" alt="XronTrix Logo" width="40" height="70" />
+            <Image src="/icon.png" alt="XronTrix Logo" width="40" height="40" />
           </Link>
           {props.land === "home" ? (
             <div>

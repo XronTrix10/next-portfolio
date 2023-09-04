@@ -10,7 +10,7 @@ import Loading from "./Loading";
 export const projects = [
   "Telegram-Leecher",
   "Python-Passwd",
-  "esp8266-BTS7960B",
+  "wifi-rc-bot",
   "CryptoLocker",
   "Pentesting-Notes",
   "next-portfolio",

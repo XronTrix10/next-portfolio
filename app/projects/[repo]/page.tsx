@@ -21,7 +21,7 @@ export async function generateMetadata({
 const projects: string[] = [
   "Telegram-Leecher",
   "Python-Passwd",
-  "esp8266-BTS7960B",
+  "wifi-rc-bot",
   "CryptoLocker",
   "Pentesting-Notes",
   "next-portfolio",
@@ -132,7 +132,7 @@ const Page = async ({ params }: { params: { repo: string } }) => {
               {/* <Getmarkdown repo={params.repo} /> */}
               <article
                 dangerouslySetInnerHTML={{ __html: html }}
-                className="prose prose-sm prose-img:rounded-lg prose-h1:text-white prose-h2:text-white prose-h3:text-white prose-h4:text-white md:prose-md text-gray-200 prose-a:text-indigo-500 prose-li:marker:text-white prose-li:text-left prose-blockquote:text-white prose-code:text-gray-400 prose-pre:bg-black prose-strong:text-white overflow-hidden"
+                className="prose prose-sm md:prose-md prose-li:font-thin prose-headings:font-thin prose-strong:font-thin prose-img:rounded-lg prose-headings:text-white text-gray-200 prose-a:text-indigo-500 prose-li:marker:text-white prose-li:text-left prose-blockquote:text-white prose-code:text-gray-400 prose-pre:bg-black prose-strong:text-white overflow-hidden"
               />
             </div>
             <div className="text-center m-9">
