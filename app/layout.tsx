@@ -11,7 +11,6 @@ export const metadata = {
 };
 
 const inter = Russo_One({ weight: "400", subsets: ["latin"] });
-export const revalidate = 3600 * 4; // revalidate at most every hour
 
 export default function RootLayout({
   children,
@@ -20,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html className={inter.className} lang="en">
-      <body>
+      <body className="bg-black">
         {children}
         <Footer />
         <ToastContainer

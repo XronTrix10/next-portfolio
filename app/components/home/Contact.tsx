@@ -93,7 +93,7 @@ function Contact() {
 
   return (
     <section
-      className="w-full bg-transparent text-white p-[3.4em] md:p-[10em] grid place-content-center"
+      className="w-full bg-transparent text-white p-[3.4em] md:p-[10em] grid place-content-center relative z-10"
       id="contact"
       ref={ref}
     >

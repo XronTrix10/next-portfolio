@@ -12,21 +12,25 @@ const testimonialsData = [
     img: "/certs/tcm.jpeg",
     company: "TCM Security",
     title: "Practical Ethical Hacking - The Complete Course",
+    cert: true,
   },
   {
     img: "/certs/udemy.png",
     company: "Udemy",
     title: "Ultimate Ethical Hacking Bootcamp",
+    cert: true,
   },
   {
     img: "/certs/coursera.jpeg",
     company: "Coursera",
     title: "IBM Cybersecurity Analyst Professional Certificate",
+    cert: false,
   },
   {
     img: "/certs/ztm.jpg",
     company: "Zero to Mastery",
     title: "Complete Ethical Hacking Bootcamp Zero to Mastery",
+    cert: false,
   },
 ];
 
@@ -58,7 +62,24 @@ const TestimonialSlider = () => {
 
   return (
     <section id="certificates">
-      <div ref={ref} className="py-[10rem] w-full min-h-screen text-center">
+      <div className="relative isolate md:px-6 lg:px-8">
+        <div
+          className="absolute inset-x-0 -z-10 transform-gpu overflow-hidden blur-3xl bottom-[calc(100%-75rem)] md:bottom-[calc(100%-85rem)] md:left-[calc(30%)]"
+          aria-hidden="true"
+        >
+          <div
+            className="relative left-[calc(50%+3rem)] aspect-[1155/678] h-[35rem] md:h-[40rem] 2xl:h-[20rem] w-[36.125rem] md:w-[70rem] 2xl:w-[35rem] -translate-x-1/2 md:-translate-x-1/4 bg-gradient-to-tr from-[#5643f8] to-[#f80000] opacity-30 sm:left-[calc(50%-36rem)]"
+            style={{
+              clipPath: " polygon(70% 50%, 1% 0, 0 100%)",
+            }}
+          />
+        </div>
+      </div>
+
+      <div
+        ref={ref}
+        className="py-[10rem] w-full min-h-screen text-center relative z-10"
+      >
         <h2 className={H2Style}>Certificates</h2>
         <h3 className={`${H3Style} px-10 mx-10`}>
           The Skills and Certificates I Acquired
@@ -72,7 +93,7 @@ const TestimonialSlider = () => {
               x: inView ? 0 : 100,
             }} // Target animation values
             transition={{ duration: 0.6, delay: 0.7 }} // Animation duration
-            className="text-white/70 hover:text-white text-[4rem] md:px-4 py-2 md:mx-[4rem]"
+            className="text-white/50 hover:text-white text-[4rem] md:px-4 py-2 md:mx-[4rem]"
             onClick={prevTestimonial}
           >
             <svg
@@ -125,27 +146,28 @@ const TestimonialSlider = () => {
                     </h2>
                   </div>
                 </div>
+                <div className="mt-10">
+                  <Link href="#contact" className={Buttons}>
+                    Certificate{" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="lucide lucide-scroll"
+                    >
+                      <path d="M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4" />
+                      <path d="M19 17V5a2 2 0 0 0-2-2H4" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
             ))}
-
-            <Link href="#contact" className={Buttons}>
-              View Certificate{" "}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="lucide lucide-scroll"
-              >
-                <path d="M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4" />
-                <path d="M19 17V5a2 2 0 0 0-2-2H4" />
-              </svg>
-            </Link>
           </motion.div>
 
           <motion.button
@@ -155,7 +177,7 @@ const TestimonialSlider = () => {
               x: inView ? 0 : -100,
             }} // Target animation values
             transition={{ duration: 0.6, delay: 0.7 }} // Animation duration
-            className="text-white/70 hover:text-white text-[4rem] md:px-4 py-2 md:mx-[4rem]"
+            className="text-white/50 hover:text-white text-[4rem] md:px-4 py-2 md:mx-[4rem]"
             onClick={nextTestimonial}
           >
             <svg

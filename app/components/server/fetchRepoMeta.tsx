@@ -1,10 +1,12 @@
 import { projects } from "../home/Projects";
 
+export const revalidate = 3600 * 4 // revalidate the data at most every 4 hour
+
 export const fetchMeta = async (project: string) => {
   
   const link = "https://api.github.com/repos/XronTrix10/" + project;
 
-  const response = await fetch(link, { cache: "force-cache" });
+  const response = await fetch(link);
 
   try {
     if (response.ok) {

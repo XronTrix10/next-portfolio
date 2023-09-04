@@ -23,7 +23,7 @@ function Notfound(props: { text: string}) {
   }, [countdown]);
 
   return (
-    <section className="min-h-[75vh] md:h-[90vh] px-24 text-center text-white bg-black grid place-content-center">
+    <section className="relative z-10 min-h-[75vh] md:h-[90vh] px-24 text-center text-white bg-black grid place-content-center">
       <h1 className="text-[8rem] rainbow-neon text-center">404</h1>
       <p className="mb-2">{props.text}</p>
       <p className="mb-8 text-[12px] text-gray-500">Returning in {countdown} seconds</p>

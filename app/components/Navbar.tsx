@@ -42,13 +42,9 @@ const Navbar = (props: { land: string }) => {
     return props.land === "home" ? "px-10" : "px-6";
   }
 
-  function bgcolor() {
-    return props.land === "home" ? "" : "bg-black/20";
-  }
-
   return (
     <header>
-      <nav className={`backdrop-blur-lg ${bgcolor()} fixed top-0 z-50 w-full`}>
+      <nav className={`backdrop-blur-lg fixed top-0 z-50 w-full`}>
         <div
           className={`flex flex-wrap items-center justify-between mx-auto p-4 ${padding()} md:px-[15%]`}
         >

@@ -1,13 +1,17 @@
-import React, { Suspense } from "react";
-import "../markdown.module.css";
-import Getmarkdown from "../Getmarkdown";
+import React from "react";
 import Link from "next/link";
 import { Buttons } from "@/app/components/ui/Styles";
 import Navbar from "@/app/components/Navbar";
-import { fetchMeta } from "@/server/fetchRepoMeta";
+import { fetchMeta } from "@/app/components/server/fetchRepoMeta";
 import Notfound from "./Notfound";
 
-export function generateMetadata({ params }: { params: { repo: string } }) {
+export const revalidate = 3600 * 4 // revalidate the data at most every hour
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { repo: string };
+}) {
   return {
     title: `${params.repo} | Xron Trix`,
     description: `Project Details for ${params.repo}`,
@@ -23,43 +27,60 @@ const projects: string[] = [
   "next-portfolio",
 ];
 
-function CustomAnimation() {
-  return (
-    <div
-      id="animate"
-      className="animate-pulse flex h-[40rem] flex-col justify-between"
-    >
-      <div className="">
-        <div className="h-10 mr-36 bg-[#414141] text-xl font-semibold mb-6 red-text rounded-lg"></div>
-        <div className="h-4 m-2 bg-[#414141] text-md rounded-lg"></div>
-        <div className="h-4 mr-6 ml-2 bg-[#414141] text-md rounded-lg"></div>
-        <div className="h-4 mr-10 m-2 bg-[#414141] text-md rounded-lg"></div>
-      </div>
-    </div>
-  );
-}
-
 interface MetaData {
   stargazers_count: number;
   forks: number;
 }
 
 const Page = async ({ params }: { params: { repo: string } }) => {
-  let meta: MetaData | null = null;
+  let project = false;
+  let html = "";
+  let meta;
 
   if (projects.includes(params.repo)) {
-    meta = await fetchMeta(params.repo);
+    project = true;
+
+    try {
+      meta = await fetchMeta(params.repo); // deduplication
+
+      const link = `https://raw.githubusercontent.com/XronTrix10/${params.repo}/${meta.default_branch}/README.md`;
+
+      const response = await fetch(link); // Revalidate every 4 hours
+
+      const content = await response.text();
+      const showdown = require("showdown");
+      const converter = new showdown.Converter();
+      html = converter.makeHtml(content);
+
+    } catch (error) {
+      console.error("Error fetching Markdown content:", error);
+    }
   }
 
   return (
-    <main className="w-full bg-black text-white">
-      {meta !== null ? (
-        <div className="py-20">
+    <main className="w-full">
+      <div className="relative isolate md:px-6 lg:px-8">
+        <div
+          className="fixed inset-x-0 top-[5rem] -z-10 transform-gpu overflow-hidden blur-3xl"
+          aria-hidden="true"
+        >
+          <div
+            className={`relative left-[calc(50%)] aspect-[1155/678] h-[65vh] 2xl:h-[80vh] w-[17rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff2323] to-[#002fff] opacity-30 sm:w-[45rem]`}
+            style={{
+              clipPath:
+                "polygon(20% 0%, 0% 20%, 9% 50%, 0% 80%, 20% 100%, 50% 78%, 80% 100%, 100% 80%, 90% 50%, 100% 20%, 80% 0%, 56% 0)",
+            }}
+          />
+        </div>
+      </div>
+
+      {project ? (
+        <div className="py-20 relative z-10 isolate">
           <Navbar land={""}></Navbar>
 
-          <div className="min-h-screen px-6 md:px-[15%] shadow-inner">
+          <div className="md:min-h-[90vh] px-6 md:px-[15%] shadow-inner">
             <div className="flex flex-row justify-between w-full text-white mt-6">
-              <div className="bg-[#242424] rounded-xl items-center flex flex-row gap-2 py-2 px-4">
+              <div className="bg-[#18181886] rounded-xl items-center flex flex-row gap-2 py-2 px-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -75,11 +96,11 @@ const Page = async ({ params }: { params: { repo: string } }) => {
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                 </svg>
                 Star
-                <div className="bg-[#5c5c5c] px-2 rounded-lg">
+                <div className="bg-[#96949457] px-2 rounded-lg">
                   {meta.stargazers_count}
                 </div>
               </div>
-              <div className="bg-[#242424] rounded-xl items-center flex flex-row gap-2 py-2 px-4">
+              <div className="bg-[#18181886] rounded-xl items-center flex flex-row gap-2 py-2 px-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -99,16 +120,20 @@ const Page = async ({ params }: { params: { repo: string } }) => {
                   <path d="M12 12v3" />
                 </svg>
                 Fork
-                <div className="bg-[#5c5c5c] px-2 rounded-lg">{meta.forks}</div>
+                <div className="bg-[#96949457] px-2 rounded-lg">
+                  {meta.forks}
+                </div>
               </div>
             </div>
             <h1 className="text-center my-10 red-text text-xl">
               Showing README of {params.repo}
             </h1>
-            <div className="bg-[#fefff0] rounded-xl p-4 md:p-10 text-center md:text-justify">
-              <Suspense fallback={<CustomAnimation />}>
-                <Getmarkdown repo={params.repo} />
-              </Suspense>
+            <div className="bg-[#18181886] rounded-xl p-4 md:p-10 text-center md:text-justify">
+              {/* <Getmarkdown repo={params.repo} /> */}
+              <article
+                dangerouslySetInnerHTML={{ __html: html }}
+                className="prose prose-sm prose-img:rounded-lg prose-h1:text-white prose-h2:text-white prose-h3:text-white prose-h4:text-white md:prose-md text-gray-200 prose-a:text-indigo-500 prose-li:marker:text-white prose-li:text-left prose-blockquote:text-white prose-code:text-gray-400 prose-pre:bg-black prose-strong:text-white overflow-hidden"
+              />
             </div>
             <div className="text-center m-9">
               <Link
