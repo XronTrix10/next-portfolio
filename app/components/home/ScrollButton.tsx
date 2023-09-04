@@ -22,7 +22,7 @@ export default function ScrollButton() {
     return () => {
       window.removeEventListener("scroll", checkScrollTop);
     };
-  }, []);
+  }, [showScroll]);
 
   return (
     <div className="fixed bottom-6 right-6 z-20" id="scrollbtn">

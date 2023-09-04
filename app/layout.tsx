@@ -1,4 +1,6 @@
 import Footer from "./components/Footer";
+import { ToastContainer } from "./components/ui/ReactToast";
+import "react-toastify/dist/ReactToastify.min.css";
 import "./globals.css";
 
 import { Russo_One } from "next/font/google";
@@ -9,6 +11,7 @@ export const metadata = {
 };
 
 const inter = Russo_One({ weight: "400", subsets: ["latin"] });
+export const revalidate = 3600 * 4; // revalidate at most every hour
 
 export default function RootLayout({
   children,
@@ -20,6 +23,18 @@ export default function RootLayout({
       <body>
         {children}
         <Footer />
+        <ToastContainer
+          position="bottom-right"
+          autoClose={3500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
       </body>
     </html>
   );

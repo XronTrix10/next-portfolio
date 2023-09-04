@@ -5,7 +5,6 @@ import Hero from "./components/home/Hero";
 import ScrollButton from "./components/home/ScrollButton";
 import Skills from "./components/home/Skills";
 import Projects from "./components/home/Projects";
-import Background from "./components/ui/Background";
 import Navbar from "./components/Navbar";
 
 export default function Home() {

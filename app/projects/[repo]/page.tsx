@@ -4,7 +4,7 @@ import Getmarkdown from "../Getmarkdown";
 import Link from "next/link";
 import { Buttons } from "@/app/components/ui/Styles";
 import Navbar from "@/app/components/Navbar";
-import { fetchMeta } from "@/app/components/server/fetchRepoMeta";
+import { fetchMeta } from "@/server/fetchRepoMeta";
 import Notfound from "./Notfound";
 
 export function generateMetadata({ params }: { params: { repo: string } }) {
@@ -67,9 +67,9 @@ const Page = async ({ params }: { params: { repo: string } }) => {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2.25"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2.25"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="lucide lucide-star"
                 >
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
@@ -87,9 +87,9 @@ const Page = async ({ params }: { params: { repo: string } }) => {
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2.25"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2.25"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   className="lucide lucide-git-fork"
                 >
                   <circle cx="12" cy="18" r="3" />
