@@ -70,7 +70,7 @@ const Projects = () => {
         <div className="container mx-auto py-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-5 2xl:px-[8rem] relative z-10">
             {projects.map((project, index) => (
-              <Link href={`/projects/${project}`}>
+              <Link href={`/projects/${project}`} key={index}>
                 <motion.div
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
