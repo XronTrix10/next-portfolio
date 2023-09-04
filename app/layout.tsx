@@ -1,6 +1,6 @@
 import Footer from "./components/Footer";
-import { ToastContainer } from "./components/ui/ReactToast";
-import "react-toastify/dist/ReactToastify.css";
+import { StyledContainer } from "./components/ui/ReactToast";
+import "react-toastify/dist/ReactToastify.min.css";
 import "./globals.css";
 
 import { Russo_One } from "next/font/google";
@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className="bg-black">
         {children}
         <Footer />
-        <ToastContainer
+        <StyledContainer
           position="bottom-right"
           autoClose={3500}
           hideProgressBar={false}

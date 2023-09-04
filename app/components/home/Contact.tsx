@@ -64,6 +64,7 @@ function Contact() {
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
+            closeButton: true,
           });
         } else {
           toast.update(id, {
@@ -75,13 +76,13 @@ function Contact() {
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
+            closeButton: true,
           });
           setFirstname("");
           setLasttname("");
           setEmail("");
           setText("");
         }
-
       } catch (error) {
         console.log("Got Error:", error);
       }
@@ -146,7 +147,6 @@ function Contact() {
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-900 border border-red-600 rounded-lg py-2 md:py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               id="username"
-              autoComplete="true"
               type="email"
               value={email}
               onChange={({ target }) => setEmail(target.value)}

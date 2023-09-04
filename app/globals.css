@@ -76,14 +76,3 @@ svg {
         filter: hue-rotate(360deg);
     }
 }
-
-.Toastify__toast {
-    border-radius: 0.6rem;
-}
-
-.Toastify__toast-theme--dark {
-    backdrop-filter: blur(15px);
-    background: none;
-    background-color: rgba(32, 32, 32, 0.466);
-    min-height: fit-content;
-}
