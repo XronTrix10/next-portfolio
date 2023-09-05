@@ -96,20 +96,7 @@ const TestimonialSlider = () => {
             className="text-white/50 hover:text-white text-[4rem] md:px-4 py-2 md:mx-[4rem]"
             onClick={prevTestimonial}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="50"
-              height="50"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="lucide lucide-chevron-left"
-            >
-              <path d="m15 18-6-6 6-6" />
-            </svg>
+            <i className="uil uil-angle-left"></i>
           </motion.button>
 
           <motion.div
@@ -148,22 +135,7 @@ const TestimonialSlider = () => {
                 </div>
                 <div className="mt-10">
                   <Link href="#contact" className={Buttons}>
-                    Certificate{" "}
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-scroll"
-                    >
-                      <path d="M8 21h12a2 2 0 0 0 2-2v-2H10v2a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v3h4" />
-                      <path d="M19 17V5a2 2 0 0 0-2-2H4" />
-                    </svg>
+                    Certificate <i className="uil uil-file-alt"></i>
                   </Link>
                 </div>
               </div>
@@ -180,20 +152,7 @@ const TestimonialSlider = () => {
             className="text-white/50 hover:text-white text-[4rem] md:px-4 py-2 md:mx-[4rem]"
             onClick={nextTestimonial}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="50"
-              height="50"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="lucide lucide-chevron-right"
-            >
-              <path d="m9 18 6-6-6-6" />
-            </svg>
+            <i className="uil uil-angle-right"></i>
           </motion.button>
         </div>
       </div>

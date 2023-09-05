@@ -26,9 +26,7 @@ function Contact() {
   const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
-    if (fname === "" && lname === "" && email === "") {
-      toast.warn("Please Enter All Fields");
-    } else if (fname === "") {
+    if (fname === "") {
       toast.warn("Please Enter First Name");
     } else if (lname === "") {
       toast.warn("Please Enter Last Name");
@@ -172,22 +170,7 @@ function Contact() {
 
         <div className="mt-8 md:mt-0 text-center w-auto">
           <button onClick={handleSubmit} className={Buttons + "text-center"}>
-            Send{" "}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="lucide lucide-send-horizontal"
-            >
-              <path d="m3 3 3 9-3 9 19-9Z" />
-              <path d="M6 12h16" />
-            </svg>
+            Send <i className="uil uil-message"></i>
           </button>
         </div>
       </motion.form>

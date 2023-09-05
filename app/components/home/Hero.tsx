@@ -57,23 +57,7 @@ function Hero() {
         >
           <Link href="#contact" className={Buttons}>
             Connect{" "}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="lucide lucide-user-plus-2"
-            >
-              <path d="M14 19a6 6 0 0 0-12 0" />
-              <circle cx="8" cy="9" r="4" />
-              <line x1="19" x2="19" y1="8" y2="14" />
-              <line x1="22" x2="16" y1="11" y2="11" />
-            </svg>
+            <i className="uil uil-user-plus"></i>
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
           </Link>
         </motion.div>
