@@ -15,16 +15,16 @@ const testimonialsData = [
     cert: true,
   },
   {
-    img: "/certs/udemy.png",
-    company: "Udemy",
-    title: "Ultimate Ethical Hacking Bootcamp",
-    cert: true,
-  },
-  {
     img: "/certs/coursera.jpeg",
     company: "Coursera",
     title: "IBM Cybersecurity Analyst Professional Certificate",
     cert: false,
+  },
+  {
+    img: "/certs/udemy.png",
+    company: "Udemy",
+    title: "Ultimate Ethical Hacking Bootcamp",
+    cert: true,
   },
   {
     img: "/certs/ztm.jpg",
@@ -33,6 +33,9 @@ const testimonialsData = [
     cert: false,
   },
 ];
+
+const disabled_link =
+  "pointer-events-none border-2 font-bold hover:font-normal border-white/50 text-white/50 hover:shadow-lg p-3 rounded-lg 2xl:text-xl";
 
 const TestimonialSlider = () => {
   const [ref, inView, entry] = useInView({
@@ -134,8 +137,16 @@ const TestimonialSlider = () => {
                   </div>
                 </div>
                 <div className="mt-10">
-                  <Link href="#contact" className={Buttons}>
-                    Certificate <i className="uil uil-file-alt"></i>
+                  <Link
+                    href="#contact"
+                    className={testimonial.cert ? Buttons : disabled_link}
+                  >
+                    Certificate{" "}
+                    {testimonial.cert ? (
+                      <i className="uil uil-file-alt"></i>
+                    ) : (
+                      <i className="uil uil-ban"></i>
+                    )}
                   </Link>
                 </div>
               </div>

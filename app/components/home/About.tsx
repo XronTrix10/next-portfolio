@@ -32,7 +32,7 @@ function About() {
         ref={ref}
         className="z-10 text-center py-[8rem] px-12 md:px-16 lg:px-[18rem] xl:px-[25rem] relative"
       >
-        <h2 className={`${H2Style} z-20`}>About Me</h2>
+        <h2 className={H2Style}>About Me</h2>
         <h3 className={H3Style}>My introduction</h3>
 
         <motion.div
@@ -42,14 +42,16 @@ function About() {
           className="md:text-lg 2xl:text-xl mb-12 my-4 2xl:px-20 text-center"
         >
           <p>
-            I chose to specialize in cybersecurity by passion, and also after
-            being hacked once in social media ( Thanks to that hacker ). Except
-            college studies, I spend most of the time on crazy things in my
-            brain, learning new stuff. I am a self and fast learner.
+            I chose to specialize in cybersecurity out of passion, especially
+            after experiencing a hack on my social media account (thanks to that
+            hacker). Apart from my college studies, I dedicate most of my time
+            to exploring new ideas and learning new things. I love experimenting
+            with new concepts
           </p>
           <p className="mt-5">
-            Outside of my proffessional life, I love gaming, table tennis, body
-            building, watching cartoons and photography. My heart dances with EDM.
+            Outside of my professional life, I have a passion for gaming, table
+            tennis, bodybuilding, watching cartoons, and photography. My heart
+            truly comes alive when I listen to EDM
           </p>
         </motion.div>
         <a href="CV/cv.txt" download="" className={Buttons}>

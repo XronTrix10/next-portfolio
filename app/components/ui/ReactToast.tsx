@@ -14,7 +14,7 @@ export const StyledContainer = styled(ToastContainer)`
     background-color: #18181886;
     min-height: fit-content;
     color: white;
-    font-family: '__Russo_One_7ca47f', '__Russo_One_Fallback_7ca47f';
+    font-family: inherit;
   }
   .Toastify__close-button {
     color: white;

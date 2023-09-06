@@ -1,20 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Buttons, H2Style, H3Style } from "../ui/Styles";
+import { H2Style, H3Style } from "../ui/Styles";
 import { motion } from "framer-motion";
 import fetchRepoData from "../server/fetchRepoMeta";
 import Link from "next/link";
 import Loading from "./Loading";
-
-export const projects = [
-  "Telegram-Leecher",
-  "Python-Passwd",
-  "wifi-rc-bot",
-  "CryptoLocker",
-  "Pentesting-Notes",
-  "next-portfolio",
-];
+import { projects } from "../server/fetchRepoMeta";
 
 type RepositoryData = {
   name: string;

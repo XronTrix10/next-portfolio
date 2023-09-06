@@ -1,6 +1,14 @@
-import { projects } from "../home/Projects";
 
 export const revalidate = 3600 * 4 // revalidate the data at most every 4 hour
+
+export const projects = [
+  "Telegram-Leecher",
+  "Python-Passwd",
+  "wifi-rc-bot",
+  "CryptoLocker",
+  "Pentesting-Notes",
+  "next-portfolio",
+];
 
 export const fetchMeta = async (project: string) => {
   

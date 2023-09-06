@@ -4,8 +4,9 @@ import { Buttons } from "@/app/components/ui/Styles";
 import Navbar from "@/app/components/Navbar";
 import { fetchMeta } from "@/app/components/server/fetchRepoMeta";
 import Notfound from "./Notfound";
+import { projects } from "@/app/components/server/fetchRepoMeta";
 
-export const revalidate = 3600 * 4 // revalidate the data at most every hour
+export const revalidate = 3600 * 4; // revalidate the data at most every 4 hours
 
 export async function generateMetadata({
   params,
@@ -16,20 +17,6 @@ export async function generateMetadata({
     title: `${params.repo} | Xron Trix`,
     description: `Project Details for ${params.repo}`,
   };
-}
-
-const projects: string[] = [
-  "Telegram-Leecher",
-  "Python-Passwd",
-  "wifi-rc-bot",
-  "CryptoLocker",
-  "Pentesting-Notes",
-  "next-portfolio",
-];
-
-interface MetaData {
-  stargazers_count: number;
-  forks: number;
 }
 
 const Page = async ({ params }: { params: { repo: string } }) => {
@@ -51,7 +38,6 @@ const Page = async ({ params }: { params: { repo: string } }) => {
       const showdown = require("showdown");
       const converter = new showdown.Converter();
       html = converter.makeHtml(content);
-
     } catch (error) {
       console.error("Error fetching Markdown content:", error);
     }
