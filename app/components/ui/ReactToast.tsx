@@ -15,6 +15,7 @@ export const StyledContainer = styled(ToastContainer)`
     min-height: fit-content;
     color: white;
     font-family: inherit;
+    font-size: 0.8rem;
   }
   .Toastify__close-button {
     color: white;
