@@ -6,8 +6,8 @@ export const projects = [
   "Python-Passwd",
   "wifi-rc-bot",
   "CryptoLocker",
-  "Pentesting-Notes",
-  "next-portfolio",
+  "Cloudflare-RESTful-KV",
+  "Cloudflare-RESTful-D1",
 ];
 
 export const fetchMeta = async (project: string) => {
