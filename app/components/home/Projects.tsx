@@ -60,22 +60,22 @@ const Projects = () => {
       </div>
       <div className="w-full md:px-[15%]">
         <div className="container mx-auto py-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-5 2xl:px-[8rem] relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-14 md:px-5 2xl:px-[8rem] relative z-10">
             {projects.map((project, index) => (
               <Link href={`/projects/${project}`} key={index}>
                 <motion.div
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   key={index}
-                  className="bg-[#18181886] border-2 border-gray-600 text-white rounded-lg shadow-md p-6 hover:border-gray-200"
+                  className="bg-[#18181886] border-2 border-gray-600 text-white rounded-xl shadow-md p-6 hover:border-gray-200"
                 >
                   {repoData[index] ? ( // Check if repoData[index] is available
                     <div className="flex h-40 flex-col justify-between">
                       <div className="">
-                        <h4 className="text-xl font-semibold mb-2 red-text">
+                        <h4 className="text-lg 2xl:text-xl font-semibold mb-4 red-text">
                           {repoData[index].name}
                         </h4>
-                        <p className="text-gray-200 text-md">
+                        <p className="text-gray-200 text-sm">
                           {getShortDescription(index)}
                         </p>
                       </div>

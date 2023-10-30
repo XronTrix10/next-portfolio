@@ -54,7 +54,7 @@ export function MoboNav() {
         </svg>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="bg-gray-600 text-white mt-5 shadow-sm border-none p-2 rounded-lg"
+        className="bg-[#161616] dark:bg-[#161616] text-white mt-5 shadow-sm border-none p-2 rounded-lg"
         align="end"
       >
         {navItems.map((navItem, index) => (
