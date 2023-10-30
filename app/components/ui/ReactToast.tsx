@@ -1,10 +1,10 @@
 "use client";
 
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 import styled from "styled-components";
 
-export { toast };
+export { toast } from "react-toastify";
 
 export const StyledContainer = styled(ToastContainer)`
   &&& .Toastify__toast {

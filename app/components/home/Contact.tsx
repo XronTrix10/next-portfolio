@@ -13,7 +13,7 @@ function Contact() {
   const [email, setEmail] = useState("");
   const [text, setText] = useState("");
 
-  const [ref, inView, entry] = useInView({
+  const [ref, inView] = useInView({
     triggerOnce: true, // Animation will trigger only once when it comes into view
     threshold: 0.3, // Percentage of element visible to trigger the animation
   });
