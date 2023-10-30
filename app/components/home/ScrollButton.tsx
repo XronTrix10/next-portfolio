@@ -5,19 +5,18 @@ import { useState, useEffect } from "react";
 export default function ScrollButton() {
   const [showScroll, setShowScroll] = useState(false);
 
-  const checkScrollTop = () => {
-    if (!showScroll && window.pageYOffset > window.innerHeight * 0.6) {
-      setShowScroll(true);
-    } else if (showScroll && window.pageYOffset <= window.innerHeight * 0.6) {
-      setShowScroll(false);
-    }
-  };
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
+    const checkScrollTop = () => {
+      if (!showScroll && window.pageYOffset > window.innerHeight * 0.6) {
+        setShowScroll(true);
+      } else if (showScroll && window.pageYOffset <= window.innerHeight * 0.6) {
+        setShowScroll(false);
+      }
+    };
     window.addEventListener("scroll", checkScrollTop);
     return () => {
       window.removeEventListener("scroll", checkScrollTop);
