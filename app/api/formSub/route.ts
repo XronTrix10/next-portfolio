@@ -1,16 +1,25 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND_API);
+import nodemailer from "nodemailer";
 
 export async function POST(request: Request) {
   const data = await request.json();
 
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.MY_EMAIL,
+      pass: process.env.EMAIL_PASSWORD,
+    },
+    tls: {
+      ciphers: "SSLv3",
+    },
+  });
+
   try {
-    const res = await resend.emails.send({
-      from: "Xron Trix <onboarding@resend.dev>",
-      to: `${process.env.MY_EMAIL}`,
-      subject: "Contact Form Submission",
+    const res = await transporter.sendMail({
+      from: `Xron Trix <${process.env.MY_EMAIL}>`,
+      to: "driju9576@gmail.com",
+      subject: "Contact Form 📝",
       html: `<!DOCTYPE html>
       <html lang="en">
       <head>
@@ -61,9 +70,10 @@ export async function POST(request: Request) {
       </html>
       `,
     });
-
+    console.log(res);
     return NextResponse.json(res);
   } catch (error) {
+    console.error(error);
     return NextResponse.json({ error }, { status: 500 });
   }
 }
