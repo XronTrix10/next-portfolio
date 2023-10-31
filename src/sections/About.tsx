@@ -38,7 +38,7 @@ function About() {
           initial={{ opacity: 0, scale: 0.6 }} // Initial animation values
           animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.6 }} // Target animation values
           transition={{ duration: 0.7 }} // Animation duration
-          className="md:text-lg 2xl:text-xl mb-12 my-4 2xl:px-20 text-center"
+          className="md:text-lg 2xl:text-xl mb-12 my-4 2xl:px-24 text-center"
         >
           <p>
             I chose to specialize in cybersecurity out of passion, especially

@@ -90,7 +90,7 @@ const TestimonialSlider = () => {
           The Skills and Certificates I Acquired
         </h3>
 
-        <div className="container px-1 flex flex-row place-content-center my-6">
+        <div className="px-1 flex flex-row place-content-center my-6">
           <motion.button
             initial={{ opacity: 0, x: 100 }} // Initial animation values
             animate={{
@@ -131,12 +131,10 @@ const TestimonialSlider = () => {
                   ></Image>
                 </div>
                 <p className="mb-4 red-text">{testimonial.company}</p>
-                <div className="flex items-center">
-                  <div>
-                    <h2 className="text-center text-[1.2rem] md:text-[1.5rem]">
-                      {testimonial.title}
-                    </h2>
-                  </div>
+                <div>
+                  <h2 className="text-center text-[1.2rem] md:text-[1.5rem]">
+                    {testimonial.title}
+                  </h2>
                 </div>
                 <div className="mt-10">
                   <Link
