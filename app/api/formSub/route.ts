@@ -1,24 +1,45 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { google } from "googleapis";
+
+const CLIENT_ID = process.env.CLIENT_ID || "";
+const CLIENT_SECRET = process.env.CLIENT_SECRET || "";
+const REFRESH_TOKEN = process.env.REFRESH_TOKEN || "";
+const REDIRECT_URL = process.env.REDIRECT_URL || "";
+const MY_EMAIL = process.env.MY_EMAIL || "";
+const SENDER_EMAIL = process.env.SENDER_EMAIL || "";
+
+const oAuth2Client = new google.auth.OAuth2(
+  CLIENT_ID,
+  CLIENT_SECRET,
+  REDIRECT_URL
+);
+
+oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
 export async function POST(request: Request) {
   const data = await request.json();
 
+  const ACCESS_TOKEN = await oAuth2Client.getAccessToken();
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.MY_EMAIL,
-      pass: process.env.EMAIL_PASSWORD,
+      type: "OAuth2",
+      user: SENDER_EMAIL,
+      clientId: CLIENT_ID,
+      clientSecret: CLIENT_SECRET,
+      refreshToken: REFRESH_TOKEN,
+      accessToken: ACCESS_TOKEN,
     },
     tls: {
-      ciphers: "SSLv3",
+      rejectUnauthorized: true,
     },
   });
 
   try {
     const res = await transporter.sendMail({
-      from: `Xron Trix <${process.env.MY_EMAIL}>`,
-      to: "driju9576@gmail.com",
+      from: `Xron Trix <${SENDER_EMAIL}>`,
+      to: MY_EMAIL,
       subject: "Contact Form 📝",
       html: `<!DOCTYPE html>
       <html lang="en">
@@ -70,7 +91,9 @@ export async function POST(request: Request) {
       </html>
       `,
     });
-    console.log(res);
+    if (res.rejected) {
+      console.log(res);
+    }
     return NextResponse.json(res);
   } catch (error) {
     console.error(error);
