@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { H2Style, H3Style, Load, Done } from "../ui/Styles";
 import { motion } from "framer-motion";
+import { CheckCircle, Loader } from 'lucide-react';
 import { useInView } from "react-intersection-observer";
 
 const skills = [
@@ -126,8 +126,8 @@ function Skills() {
       </div>
 
       <div className="relative z-20">
-        <h2 className={H2Style}>My Skills</h2>
-        <h3 className={`${H3Style} mx-8 md:mx-0`}>
+        <h2>My Skills</h2>
+        <h3 className="mx-8 md:mx-0">
           The Skills That I Learnt and Still Learning
         </h3>
 
@@ -149,7 +149,7 @@ function Skills() {
                       key={index}
                       className="flex flex-row items-center gap-2 mx-auto my-[10px]"
                     >
-                      {item.name} {item.done ? <Done /> : <Load />}
+                      {item.name} {item.done ? <CheckCircle size={20} /> : <Loader size={20} />}
                     </div>
                   ))}
                 </div>
@@ -161,10 +161,10 @@ function Skills() {
 
       <div className="my-8 mt-12 text-center grid relative">
         <div className="flex flex-row items-center gap-2 mx-auto my-2 hover:text-[#fc0303] hover:font-bold">
-          Confident <Done />
+          Confident <CheckCircle size={20} />
         </div>
         <div className="flex flex-row items-center gap-2 mx-auto my-2 hover:text-[#fc0303] hover:font-bold">
-          Still Learning <Load />
+          Still Learning <Loader size={20} />
         </div>
       </div>
     </section>

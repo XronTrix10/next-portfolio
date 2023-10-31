@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-import { Buttons } from "../ui/Styles";
 import { motion } from "framer-motion";
 
 function Hero() {
@@ -25,7 +24,7 @@ function Hero() {
 
       <div className="z-10 text-left px-10 sm:px-16 md:px-[15%] pt-[65%] sm:pt-[40%] md:pt-[22%] lg:pt-[15%] 2xl:pt-[17%] min-h-screen relative">
         <div className="my-2 mb-8 lg:mb-5 z-20">
-          <h2 className="md:text-lg 2xl:text-xl z-20">Hi, I&apos;am</h2>
+          <h4 className="md:text-lg 2xl:text-xl z-20">Hi, I&apos;am</h4>
           <motion.h1
             initial={{ opacity: 0, x: -100 }} // Initial animation values
             animate={{ opacity: 1, x: 0 }} // Target animation values
@@ -45,17 +44,17 @@ function Hero() {
           transition={{ duration: 0.7, delay: 0.7 }} // Animation duration
           className="my-7"
         >
-          <h2 className="md:text-lg 2xl:text-xl mb-12">
+          <h4 className="md:text-lg 2xl:text-xl mb-12">
             I am a self learner, resolute, security enthusiast, script kiddie,
             coder and technology lover
-          </h2>
+          </h4>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: -100 }} // Initial animation values
           animate={{ opacity: 1, x: 0 }} // Target animation values
           transition={{ duration: 0.7, delay: 1.4 }} // Animation duration
         >
-          <Link href="#contact" className={Buttons}>
+          <Link href="#contact" id="btn">
             Connect{" "}
             <i className="uil uil-user-plus"></i>
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />

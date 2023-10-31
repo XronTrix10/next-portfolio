@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { Buttons } from "./components/ui/Styles";
 import { useEffect, useState } from "react";
 
 export default function NotFound() {
@@ -28,7 +27,7 @@ export default function NotFound() {
       <p className="mb-2">What Are You Exactly Looking For Huh ?</p>
       <p className="mb-8 text-[12px] text-gray-500">Returning in {countdown} seconds</p>
       <div className="px-8">
-        <Link href="/" className={Buttons}>
+        <Link href="/" id="btn">
           Home
         </Link>
       </div>

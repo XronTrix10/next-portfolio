@@ -1,11 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { Buttons, H2Style, H3Style } from "../ui/Styles";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-import { toast } from "../ui/ReactToast";
+import { toast } from "../components/ui/ReactToast";
 
 function Contact() {
   const [fname, setFirstname] = useState("");
@@ -94,8 +93,8 @@ function Contact() {
       ref={ref}
     >
       <div className="text-center mb-4 md:mb-8">
-        <h2 className={H2Style}>Contact Me</h2>
-        <h3 className={H3Style}>Email Me</h3>
+        <h2>Contact Me</h2>
+        <h3>Email Me</h3>
       </div>
 
       <motion.form
@@ -169,7 +168,7 @@ function Contact() {
         </div>
 
         <div className="mt-8 md:mt-0 text-center w-auto">
-          <button onClick={handleSubmit} className={Buttons + "text-center"}>
+          <button onClick={handleSubmit} className={"text-center"} id="btn">
             Send <i className="uil uil-message"></i>
           </button>
         </div>

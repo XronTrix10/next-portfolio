@@ -1,7 +1,6 @@
 "use client"; // Error components must be Client Components
 
 import { useEffect } from "react";
-import { Buttons } from "./components/ui/Styles";
 
 export default function Error({
   error,
@@ -21,7 +20,7 @@ export default function Error({
       <p className="mb-12">Something Broke on Server !</p>
       <div className="px-8">
         <button
-          className={Buttons}
+          id="btn"
           onClick={
             // Attempt to recover by trying to re-render the segment
             () => reset()

@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Buttons, H2Style, H3Style } from "../ui/Styles";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -36,6 +35,9 @@ const testimonialsData = [
 
 const disabled_link =
   "pointer-events-none border-2 font-bold hover:font-normal border-white/50 text-white/50 hover:shadow-lg p-3 rounded-lg 2xl:text-xl";
+
+const enabled_link =
+  "border-2 font-bold hover:font-normal border-[#fc0303] red-text hover:shadow-lg hover:shadow-red-600 hover:bg-red-700 hover:text-white p-3 rounded-lg 2xl:text-xl";
 
 const TestimonialSlider = () => {
   const [ref, inView, entry] = useInView({
@@ -83,8 +85,8 @@ const TestimonialSlider = () => {
         ref={ref}
         className="py-[10rem] w-full min-h-screen text-center relative z-10"
       >
-        <h2 className={H2Style}>Certificates</h2>
-        <h3 className={`${H3Style} px-10 mx-10`}>
+        <h2>Certificates</h2>
+        <h3 className={`px-10 mx-10`}>
           The Skills and Certificates I Acquired
         </h3>
 
@@ -139,7 +141,7 @@ const TestimonialSlider = () => {
                 <div className="mt-10">
                   <Link
                     href="#contact"
-                    className={testimonial.cert ? Buttons : disabled_link}
+                    className={testimonial.cert ? enabled_link : disabled_link}
                   >
                     Certificate{" "}
                     {testimonial.cert ? (

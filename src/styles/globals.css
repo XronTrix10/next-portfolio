@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+
+::selection {
+  color: white;
+  background: rgb(83, 82, 82);
+}
+
+/* Custom Scroll-Bar */
+
+::-webkit-scrollbar {
+  width: .7rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(122, 122, 122);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #910505;
+}
+
+.red-text {
+  color: #ff0000;
+}
+
+.h2-shade:hover {
+  text-shadow: 0px 0px 20px rgb(143, 143, 143);
+}
+
+.trix-shade:hover {
+  text-shadow: 0px 0px 10px rgb(255, 48, 48)
+}
+
+.xron-shade:hover {
+  text-shadow: 0px 0px 10px rgb(151, 151, 151)
+}
+
+#nav-icon {
+  height: auto;
+  width: auto;
+}
+
+svg {
+  display: inherit;
+}
+
+.not-found:hover {
+  text-shadow: 0px 0px 80px rgb(255, 0, 0)
+}
+
+#btn {
+  @apply border-2 font-bold hover:font-normal border-[#fc0303] red-text hover:shadow-lg hover:shadow-red-600 hover:bg-red-700 hover:text-white p-3 rounded-lg 2xl:text-xl
+}
+
+h2 {
+  @apply text-[3rem] md:text-[4rem] 2xl:text-[5rem] h2-shade
+}
+
+h3 {
+  @apply text-[#fc0303] md:text-lg 2xl:text-xl mb-12 my-4
+}
+
+.rainbow-neon {
+  /* font-size: 5rem; */
+  background-image: linear-gradient(45deg, #f3626b, #6181ff, #a25bf2, #ffc100);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow-keyframe 3s linear infinite;
+}
+
+@keyframes rainbow-keyframe {
+  0% {
+      filter: hue-rotate(0deg);
+  }
+
+  100% {
+      filter: hue-rotate(360deg);
+  }
+}

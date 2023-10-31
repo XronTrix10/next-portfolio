@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { H2Style, H3Style } from "../ui/Styles";
 import { motion } from "framer-motion";
-import fetchRepoData from "../server/fetchRepoMeta";
+import fetchRepoData from "../components/server/fetchRepoMeta";
 import Link from "next/link";
-import Loading from "./Loading";
-import { projects } from "../server/fetchRepoMeta";
+import Loading from "../components/loaders/ProjectLoader";
+import { projects } from "../components/server/fetchRepoMeta";
 
 type RepositoryData = {
   name: string;
@@ -55,8 +54,8 @@ const Projects = () => {
       </div>
 
       <div className="text-center my-[6rem] px-12 md:px-16 lg:px-[18rem] xl:px-[25rem] relative z-10">
-        <h2 className={H2Style}>Projects</h2>
-        <h3 className={H3Style}>My all Projects</h3>
+        <h2>Projects</h2>
+        <h3>My all Projects</h3>
       </div>
       <div className="w-full md:px-[15%]">
         <div className="container mx-auto py-8">

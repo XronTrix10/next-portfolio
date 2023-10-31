@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { google } from "googleapis";
+import { NextResponse } from "next/server";
 
 const CLIENT_ID = process.env.CLIENT_ID || "";
 const CLIENT_SECRET = process.env.CLIENT_SECRET || "";
@@ -20,7 +20,7 @@ oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 export async function POST(request: Request) {
   const data = await request.json();
 
-  const ACCESS_TOKEN = await oAuth2Client.getAccessToken();
+  // const ACCESS_TOKEN = await oAuth2Client.getAccessToken();
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
       clientId: CLIENT_ID,
       clientSecret: CLIENT_SECRET,
       refreshToken: REFRESH_TOKEN,
-      accessToken: ACCESS_TOKEN,
+      // accessToken: ACCESS_TOKEN,  // Throwing exception in typescript (Works fine without it), but working fine in route.js
     },
     tls: {
       rejectUnauthorized: true,

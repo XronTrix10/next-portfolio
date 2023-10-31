@@ -1,12 +1,11 @@
 "use client";
 
 import React from "react";
-import { Buttons, H2Style, H3Style } from "../ui/Styles";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 function About() {
-  const [ref, inView, entry] = useInView({
+  const [ref, inView] = useInView({
     triggerOnce: true, // Animation will trigger only once when it comes into view
     threshold: 0.5, // Percentage of element visible to trigger the animation
   });
@@ -32,8 +31,8 @@ function About() {
         ref={ref}
         className="z-10 text-center py-[8rem] px-12 md:px-16 lg:px-[18rem] xl:px-[25rem] relative"
       >
-        <h2 className={H2Style}>About Me</h2>
-        <h3 className={H3Style}>My introduction</h3>
+        <h2>About Me</h2>
+        <h3>My introduction</h3>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.6 }} // Initial animation values
@@ -54,7 +53,7 @@ function About() {
             truly comes alive when I listen to EDM
           </p>
         </motion.div>
-        <a href="CV/cv.txt" download="" className={Buttons}>
+        <a href="CV/cv.txt" download="" id="btn">
           Download CV <i className="uil uil-file-download"></i>
         </a>
       </div>
