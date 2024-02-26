@@ -1,11 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import fetchRepoData from "../server/fetch-repodata";
 import Link from "next/link";
-import Loading from "../components/loaders/ProjectLoader";
-import { projects } from "../server/fetch-repodata";
+import { motion } from "framer-motion";
+import { projects } from "../../server/fetch-repodata";
+import Loading from "../../components/loaders/ProjectLoader";
 
 type RepositoryData = {
   name: string;
@@ -15,26 +13,16 @@ type RepositoryData = {
   default_branch: string;
 };
 
-const Projects = () => {
-  const [repoData, setRepoData] = useState<RepositoryData[]>([]);
+const ProjectsClient = (props: {repoData: RepositoryData[]}) => {
 
   function getShortDescription(index: number): string {
-    const words = repoData[index].description.split(" ");
+    const words = props.repoData[index].description.split(" ");
     if (words.length > 8) {
       const first8Words = words.slice(0, 8).join(" ");
       return first8Words + "....";
     }
-    return repoData[index].description;
+    return props.repoData[index].description;
   }
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchRepoData();
-      setRepoData(data);
-    };
-
-    fetchData();
-  }, []);
 
   return (
     <section id="projects" className="bg-transparent w-full md:min-h-screen">
@@ -68,11 +56,11 @@ const Projects = () => {
                   key={index}
                   className="bg-[#18181886] border-2 border-gray-600 text-white rounded-xl shadow-md p-6 hover:border-gray-200"
                 >
-                  {repoData[index] ? ( // Check if repoData[index] is available
+                  {props.repoData[index] ? ( // Check if repoData[index] is available
                     <div className="flex h-40 flex-col justify-between">
                       <div className="">
                         <h4 className="text-lg 2xl:text-xl font-semibold mb-4 red-text">
-                          {repoData[index].name}
+                          {props.repoData[index].name}
                         </h4>
                         <p className="text-gray-200 text-sm">
                           {getShortDescription(index)}
@@ -98,4 +86,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default ProjectsClient;
