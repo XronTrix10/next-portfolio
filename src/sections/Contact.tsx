@@ -3,16 +3,12 @@
 import z from "zod";
 import { FormEvent } from "react";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-
+import { sendMail } from "../lib/mail";
 import { toast } from "../components/ui/ReactToast";
+import { useInView } from "react-intersection-observer";
+import { getContactFormHtml } from "../lib/template/contact-form";
 
 function Contact() {
-  const [fname, setFirstname] = useState("");
-  const [lname, setLasttname] = useState("");
-  const [email, setEmail] = useState("");
-  const [text, setText] = useState("");
-
   const [ref, inView] = useInView({
     triggerOnce: true, // Animation will trigger only once when it comes into view
     threshold: 0.3, // Percentage of element visible to trigger the animation
@@ -25,7 +21,7 @@ function Contact() {
     message: z.string(),
   });
 
-  const handleSubmit = async (event: { preventDefault: () => void }) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formdata = new FormData(event.currentTarget);
 
@@ -42,52 +38,44 @@ function Contact() {
     }
 
     try {
-        const data = {
-          FirstName: fname,
-          LastName: lname,
-          Email: email,
-          Message: text,
-        };
+      const id = toast.loading("Sending Email...");
 
-        const id = toast.loading("Sending Email...");
+      const html = getContactFormHtml(typeCheck.data);
 
-        const res = await fetch("/api/formSub", {
-          method: "POST",
-          body: JSON.stringify(data),
+      const res = await sendMail({
+        to: "",
+        name: "",
+        subject: "Portfolio Form",
+        body: html,
+      });
+
+      if (!res) {
+        toast.update(id, {
+          render: "Couldn't Send Email !",
+          type: "error",
+          isLoading: false,
+          autoClose: 3500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          closeButton: true,
         });
-
-        if (res.status !== 200) {
-          toast.update(id, {
-            render: "Couldn't Send Email !",
-            type: "error",
-            isLoading: false,
-            autoClose: 3500,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            closeButton: true,
-          });
-        } else {
-          toast.update(id, {
-            render: "Email Sent Successfully",
-            type: "success",
-            isLoading: false,
-            autoClose: 3500,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            closeButton: true,
-          });
-          setFirstname("");
-          setLasttname("");
-          setEmail("");
-          setText("");
-        }
-      } catch (error) {
-        console.log("Got Error:", error);
+      } else {
+        toast.update(id, {
+          render: "Email Sent Successfully",
+          type: "success",
+          isLoading: false,
+          autoClose: 3500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          closeButton: true,
+        });
       }
+    } catch (error) {
+      console.error("Got Error:", error);
     }
   };
 
@@ -110,6 +98,7 @@ function Contact() {
         }} // Target animation values
         transition={{ duration: 0.7 }} // Animation duration
         className="w-full max-w-lg"
+        onSubmit={handleSubmit}
       >
         <div className="flex flex-wrap -mx-3">
           <div className="w-full md:w-1/2 px-3">
@@ -118,12 +107,11 @@ function Contact() {
             </label>
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-900 border border-red-500 rounded-lg py-2 md:py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-              id="first-name"
+              id="firstName"
               type="text"
-              value={fname}
-              onChange={({ target }) => setFirstname(target.value)}
+              name="firstName"
               placeholder="Xron"
-              required
+              required={true}
             />
           </div>
           <div className="w-full md:w-1/2 px-3">
@@ -132,12 +120,11 @@ function Contact() {
             </label>
             <input
               className="appearance-none block w-full bg-gray-200 text-gray-900 border border-red-500 rounded-lg py-2 md:py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-              id="last-name"
+              id="lastName"
               type="text"
-              value={lname}
-              onChange={({ target }) => setLasttname(target.value)}
+              name="lastName"
               placeholder="Trix"
-              required
+              required={true}
             />
           </div>
         </div>
@@ -150,10 +137,9 @@ function Contact() {
               className="appearance-none block w-full bg-gray-200 text-gray-900 border border-red-600 rounded-lg py-2 md:py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               id="username"
               type="email"
-              value={email}
-              onChange={({ target }) => setEmail(target.value)}
+              name="email"
               placeholder="Email ID"
-              required
+              required={true}
             />
           </div>
           <div className="md:mb-6 w-full">
@@ -163,17 +149,16 @@ function Contact() {
             <textarea
               className="appearance-none block w-full bg-gray-200 text-gray-900 border border-red-600 rounded-lg py-2 md:py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               id="txtmessage"
-              value={text}
-              onChange={({ target }) => setText(target.value)}
+              name="message"
               placeholder="Your message here"
               rows={5}
-              required
+              required={true}
             />
           </div>
         </div>
 
         <div className="mt-8 md:mt-0 text-center w-auto">
-          <button onClick={handleSubmit} className={"text-center"} id="btn">
+          <button className={"text-center"} id="btn">
             Send <i className="uil uil-message"></i>
           </button>
         </div>
