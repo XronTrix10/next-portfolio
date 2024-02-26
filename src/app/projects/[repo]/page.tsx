@@ -3,7 +3,7 @@ import Link from "next/link";
 import Notfound from "./Notfound";
 import { Star, GitFork } from "lucide-react";
 import Navbar from "@/src/components/Navbar";
-import { projects, fetchMeta } from "@/src/components/server/fetchRepoMeta";
+import { projects, fetchMeta } from "@/src/server/fetch-repodata";
 
 export const revalidate = 3600 * 4; // revalidate the data at most every 4 hours
 

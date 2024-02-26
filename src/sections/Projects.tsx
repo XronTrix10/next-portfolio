@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import fetchRepoData from "../components/server/fetchRepoMeta";
+import fetchRepoData from "../server/fetch-repodata";
 import Link from "next/link";
 import Loading from "../components/loaders/ProjectLoader";
-import { projects } from "../components/server/fetchRepoMeta";
+import { projects } from "../server/fetch-repodata";
 
 type RepositoryData = {
   name: string;
