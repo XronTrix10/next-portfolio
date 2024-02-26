@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import z from "zod";
+import { FormEvent } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -17,26 +18,30 @@ function Contact() {
     threshold: 0.3, // Percentage of element visible to trigger the animation
   });
 
-  function validateEmail(email: string) {
-    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    return emailRegex.test(email);
-  }
+  const contactSchema = z.object({
+    firstName: z.string(),
+    lastName: z.string(),
+    email: z.string().email({ message: "Invalid email address" }),
+    message: z.string(),
+  });
 
   const handleSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
+    const formdata = new FormData(event.currentTarget);
 
-    if (fname === "") {
-      toast.warn("Please Enter First Name");
-    } else if (lname === "") {
-      toast.warn("Please Enter Last Name");
-    } else if (email === "") {
-      toast.warn("Please Enter Email Address");
-    } else if (!validateEmail(email)) {
-      toast.warn("Enter A Valid Email Address");
-    } else if (text === "") {
-      toast.warn("Please Enter A Message");
-    } else {
-      try {
+    const typeCheck = contactSchema.safeParse({
+      firstName: formdata.get("firstName"),
+      lastName: formdata.get("lastName"),
+      email: formdata.get("email"),
+      message: formdata.get("message"),
+    });
+
+    if (!typeCheck.success) {
+      toast.warn(typeCheck.error.issues[0].message);
+      return;
+    }
+
+    try {
         const data = {
           FirstName: fname,
           LastName: lname,
