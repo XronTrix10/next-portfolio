@@ -42,15 +42,10 @@ function About() {
         >
           <p>
             I chose to specialize in cybersecurity out of passion, especially
-            after experiencing a hack on my social media account (thanks to that
-            hacker). Apart from my college studies, I dedicate most of my time
-            to exploring new ideas and learning new things. I love experimenting
-            with new concepts
+            after experiencing a hack on my social media account (thanks to him). Apart from my college studies, I always try and learn new technologies.
           </p>
           <p className="mt-5">
-            Outside of my professional life, I have a passion for gaming, table
-            tennis, bodybuilding, watching cartoons, and photography. My heart
-            truly comes alive when I listen to EDM
+            Outside of my professional life, I love racing games, body building, photography. My secret behind energy and dedication is EDM
           </p>
         </motion.div>
         <a href="CV/cv.txt" download="" id="btn">
