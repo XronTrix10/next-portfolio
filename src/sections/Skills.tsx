@@ -1,101 +1,39 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import { CheckCircle, Loader } from 'lucide-react';
+import { CheckCircle, Loader } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 
 const skills = [
   {
-    title: "Coding Skills",
-    items: [
-      {
-        name: "C",
-        done: true,
-      },
-      {
-        name: "C++",
-        done: true,
-      },
-      {
-        name: "Python",
-        done: true,
-      },
-      {
-        name: "Java",
-        done: true,
-      },
-      {
-        name: "Bash",
-        done: false,
-      },
-      {
-        name: "Javascript",
-        done: false,
-      },
-      {
-        name: "Assembly",
-        done: false,
-      },
-    ],
+    title: "Next.js",
+    logo: "https://static-00.iconduck.com/assets.00/nextjs-icon-512x512-y563b8iq.png",
+    details: "",
+    confidence: 1,
   },
   {
-    title: "Pen Testing",
-    items: [
-      {
-        name: "CTF Player",
-        done: false,
-      },
-      {
-        name: "Bug Hunting",
-        done: false,
-      },
-      {
-        name: "Cryptography",
-        done: true,
-      },
-      {
-        name: "Malware Analysis",
-        done: false,
-      },
-      {
-        name: "Reverse Engineering",
-        done: false,
-      },
-    ],
+    title: "React.js",
+    logo: "https://static-00.iconduck.com/assets.00/react-icon-2048x2048-o8k3ymqa.png",
+    details: "",
+    confidence: 1,
   },
   {
-    title: "Other Skills",
-    items: [
-      {
-        name: "Web Dev",
-        done: true,
-      },
-      {
-        name: "IOT Dev",
-        done: true,
-      },
-      {
-        name: "Android Dev",
-        done: false,
-      },
-      {
-        name: "Photoshop",
-        done: false,
-      },
-      {
-        name: "Video Editing",
-        done: true,
-      },
-      {
-        name: "UI / UX Design",
-        done: false,
-      },
-      {
-        name: "Microsoft Office",
-        done: true,
-      },
-    ],
+    title: "TailwindCSS",
+    logo: "https://pbs.twimg.com/profile_images/1730334391501488129/G0R0sjHH_400x400.jpg",
+    details: "",
+    confidence: 1,
+  },
+  {
+    title: "Node.js",
+    logo: "https://ih1.redbubble.net/image.404031065.2191/tst,small,507x507-pad,600x600,f8f8f8.u1.jpg",
+    details: "",
+    confidence: 0,
+  },
+  {
+    title: "TypeScript",
+    logo: "https://seekvectors.com/files/download/TYPE%20SCRIPT%20LOGO.png",
+    details: "",
+    confidence: 1,
   },
 ];
 
@@ -128,33 +66,44 @@ function Skills() {
       <div className="relative z-20">
         <h2>My Skills</h2>
         <h3 className="mx-8 md:mx-0">
-          The Skills That I Learnt and Still Learning
+          The Top Skills That I Adopted and Still Adding
         </h3>
 
-        <div ref={ref} className="flex flex-wrap gap-8 justify-center">
+        <div
+          ref={ref}
+          className="grid grid-cols-6 gap-y-10 justify-center px-72 my-24"
+        >
           {skills.map((skill, index) => (
-            <motion.div
+            <div
               key={index}
-              whileHover={{ scale: 1.1 }}
-              // whileTap={{ scale: 0.9 }}
-              className="z-10 w-[65%] sm:w-[35%] xl:w-[20%] 2xl:w-[16%] bg-[#18181886] max-w-sm overflow-hidden border-2 border-gray-500 rounded-xl p-5 py-7 md:shadow-none hover:border-white"
+              className={`flex ${
+                index < 3 ? "col-span-2" : "col-span-3"
+              } mx-auto items-center bg-[#18181886] h-16 rounded-full`}
             >
-              <div className="px-6 py-4 text-center">
-                <div className="font-bold text-xl red-text mb-5">
-                  {skill.title}
-                </div>
-                <div className="text-base grid text-center">
-                  {skill.items.map((item, index) => (
-                    <div
-                      key={index}
-                      className="flex flex-row items-center gap-2 mx-auto my-[10px]"
-                    >
-                      {item.name} {item.done ? <CheckCircle size={20} /> : <Loader size={20} />}
-                    </div>
-                  ))}
-                </div>
+              <div className="h-20 w-20 group rounded-full border border-gray-600 bg-white grid place-items-center">
+                <img
+                  src={skill.logo}
+                  alt={skill.title}
+                  className="rounded-full group-hover:opacity-30 duration-200"
+                />
+                {skill.confidence === 0 ? (
+                  <Loader
+                    className="absolute hidden group-hover:flex text-gray-700 duration-200"
+                    size={40}
+                    strokeWidth={2.4}
+                  />
+                ) : (
+                  <CheckCircle
+                    className="absolute hidden group-hover:flex text-gray-700 duration-200"
+                    size={40}
+                    strokeWidth={2.4}
+                  />
+                )}
               </div>
-            </motion.div>
+              <div className="h-16 rounded-lg  flex justify-center items-center ml-2 mr-5">
+                <h6 className="text-lg">{skill.title}</h6>
+              </div>
+            </div>
           ))}
         </div>
       </div>
