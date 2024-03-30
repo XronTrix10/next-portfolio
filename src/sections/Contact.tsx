@@ -15,10 +15,13 @@ function Contact() {
   });
 
   const contactSchema = z.object({
-    firstName: z.string(),
-    lastName: z.string(),
-    email: z.string().email({ message: "Invalid email address" }),
-    message: z.string(),
+    firstName: z.string().min(1, { message: "Please enter first name" }),
+    lastName: z.string().min(1, { message: "Please enter last name" }),
+    email: z
+      .string()
+      .min(1, { message: "Please enter your email" })
+      .email({ message: "Invalid email address" }),
+    message: z.string().min(1, { message: "Please leave a message" }),
   });
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -99,6 +102,7 @@ function Contact() {
         transition={{ duration: 0.7 }} // Animation duration
         className="w-full max-w-lg"
         onSubmit={handleSubmit}
+        noValidate={true}
       >
         <div className="flex flex-wrap -mx-3">
           <div className="w-full md:w-1/2 px-3">
@@ -111,7 +115,6 @@ function Contact() {
               type="text"
               name="firstName"
               placeholder="Xron"
-              required={true}
             />
           </div>
           <div className="w-full md:w-1/2 px-3">
@@ -124,7 +127,6 @@ function Contact() {
               type="text"
               name="lastName"
               placeholder="Trix"
-              required={true}
             />
           </div>
         </div>
@@ -139,7 +141,6 @@ function Contact() {
               type="email"
               name="email"
               placeholder="Email ID"
-              required={true}
             />
           </div>
           <div className="md:mb-6 w-full">
@@ -152,7 +153,6 @@ function Contact() {
               name="message"
               placeholder="Your message here"
               rows={5}
-              required={true}
             />
           </div>
         </div>
