@@ -29,7 +29,7 @@ export default function ScrollButton() {
       {showScroll && (
         <button
           onClick={scrollToTop}
-          className="backdrop-blur-x duration-150 border-2 border-[#ff0000] hover:text-white hover:bg-red-700 hover:shadow-lg hover:shadow-red-600 red-text rounded-xl p-2 shadow-md"
+          className="backdrop-blur-xl duration-150 border-2 border-[#ff0000] hover:text-white hover:bg-red-700 hover:shadow-lg hover:shadow-red-600 red-text rounded-xl p-2 shadow-md"
         >
           <ChevronsUp size={24} />
         </button>
