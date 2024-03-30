@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
+import { Link } from "react-scroll";
 import { motion } from "framer-motion";
 
 function Hero() {
@@ -54,9 +54,8 @@ function Hero() {
           animate={{ opacity: 1, x: 0 }} // Target animation values
           transition={{ duration: 0.7, delay: 1.4 }} // Animation duration
         >
-          <Link href="#contact" id="btn">
-            Connect{" "}
-            <i className="uil uil-user-plus"></i>
+          <Link spy={true} smooth={true} to="contact" id="btn">
+            Connect <i className="uil uil-user-plus"></i>
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
           </Link>
         </motion.div>
