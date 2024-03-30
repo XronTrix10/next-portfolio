@@ -45,7 +45,7 @@ function Skills() {
 
   return (
     <section
-      className="bg-transparent w-full min-h-screen text-center my-6"
+      className="bg-transparent w-full md:min-h-screen text-center mt-6 md:mt-32 mb-44"
       id="skills"
     >
       <div className="relative isolate md:px-6 lg:px-8">
@@ -66,21 +66,19 @@ function Skills() {
       <div className="relative z-20">
         <h2>My Skills</h2>
         <h3 className="mx-8 md:mx-0">
-          The Top Skills That I Adopted and Still Adding
+          Top Skills, I Adopted and Still Adding
         </h3>
 
         <div
           ref={ref}
-          className="grid grid-cols-6 gap-y-10 justify-center px-72 my-24"
+          className="flex flex-wrap md:gap-x-16 gap-y-10 md:gap-y-20 justify-center px-10 md:px-80 my-24"
         >
           {skills.map((skill, index) => (
             <div
               key={index}
-              className={`flex ${
-                index < 3 ? "col-span-2" : "col-span-3"
-              } mx-auto items-center bg-[#18181886] h-16 rounded-full`}
+              className={`flex mx-auto items-center bg-[#18181886] h-10 rounded-full`}
             >
-              <div className="h-20 w-20 group rounded-full border border-gray-600 bg-white grid place-items-center">
+              <div className="h-12 w-12 md:h-20 md:w-20 group rounded-full border border-gray-600 bg-white grid place-items-center">
                 <img
                   src={skill.logo}
                   alt={skill.title}
@@ -100,8 +98,8 @@ function Skills() {
                   />
                 )}
               </div>
-              <div className="h-16 rounded-lg  flex justify-center items-center ml-2 mr-5">
-                <h6 className="text-lg">{skill.title}</h6>
+              <div className="h-6 md:h-16 rounded-lg  flex justify-center items-center ml-2 mr-5">
+                <h6 className="text-sm md:text-lg">{skill.title}</h6>
               </div>
             </div>
           ))}
