@@ -61,7 +61,7 @@ svg {
 }
 
 #btn {
-  @apply border-2 font-bold hover:font-normal border-[#fc0303] red-text hover:shadow-lg hover:shadow-red-600 hover:bg-red-700 hover:text-white p-3 rounded-lg 2xl:text-xl
+  @apply border-2 font-bold hover:font-normal duration-150 border-[#fc0303] red-text hover:shadow-lg hover:shadow-red-600 hover:bg-red-700 hover:text-white p-3 rounded-lg 2xl:text-xl
 }
 
 h2 {
