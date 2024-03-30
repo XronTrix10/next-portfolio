@@ -1,13 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "../dropdown-menu";
+import { Sheet, SheetContent, SheetTrigger } from "../sheet";
+import CustomLink from "./CustomLink";
 import { LayoutGrid } from "lucide-react";
+import { useState } from "react";
 
 export const navItems = [
   {
@@ -33,21 +29,34 @@ export const navItems = [
 ];
 
 export function MoboNav() {
+  const [activeSection, setActiveSection] = useState<string>("");
+
+  const handleSetActive = (to: string) => {
+    setActiveSection(to);
+  };
+
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger className="red-text outline-none md:hidden rotate-45 focus:rotate-0">
-      <LayoutGrid size={30} />
-      </DropdownMenuTrigger>
-      <DropdownMenuContent
-        className="bg-[#161616] dark:bg-[#161616] text-white mt-5 shadow-sm border-none p-2 rounded-lg"
-        align="end"
+    <Sheet>
+      <SheetTrigger
+        className="red-text outline-none md:hidden rotate-45 data-[state=open]:-rotate-90 duration-200"
       >
-        {navItems.map((navItem, index) => (
-          <DropdownMenuItem asChild key={index}>
-            <Link href={`#${navItem.link}`}>{navItem.title}</Link>
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
+        <LayoutGrid size={27} />
+      </SheetTrigger>
+      <SheetContent className="bg-[#161616] dark:bg-[#161616] text-white border-none p-2 flex flex-col justify-between">
+        <div className="flex flex-col gap-y-2 px-4 py-10 pt-16">
+          {navItems.map((navItem, index) => (
+            <p key={index} className="px-2 py-4 rounded-md text-lg">
+              <CustomLink
+                activeSection={activeSection}
+                handleSetActive={handleSetActive}
+                title={navItem.title}
+                to={navItem.link}
+              />
+            </p>
+          ))}
+        </div>
+        <span className="px-6 mb-6 opacity-80">Made at night ❤️</span>
+      </SheetContent>
+    </Sheet>
   );
 }
