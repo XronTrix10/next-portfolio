@@ -54,7 +54,7 @@ const ProjectsClient = (props: {repoData: RepositoryData[]}) => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   key={index}
-                  className="bg-[#18181886] border-2 border-gray-600 text-white rounded-xl shadow-md p-6 hover:border-gray-200"
+                  className="bg-[#18181886] border border-gray-600 text-white rounded-xl shadow-md p-6 hover:border-gray-300"
                 >
                   {props.repoData[index] ? ( // Check if repoData[index] is available
                     <div className="flex h-40 flex-col justify-between">
