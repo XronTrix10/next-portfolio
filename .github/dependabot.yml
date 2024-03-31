@@ -1,0 +1,20 @@
+version: 2
+updates:
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  # Maintain dependencies for npm packages
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+      time: "16:00"
+    target-branch: "main"
+    commit-message:
+      prefix: "bot-commit-"
+      include: "scope"
+    reviewers:
+      - "XronTrix10"
