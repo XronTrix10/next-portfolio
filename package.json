@@ -18,7 +18,7 @@
     "googleapis": "^128.0.0",
     "lucide-react": "^0.331.0",
     "next": "14.1.4",
-    "nodemailer": "^6.9.9",
+    "nodemailer": "^6.9.13",
     "react": "^18",
     "react-dom": "^18",
     "react-intersection-observer": "^9.5.2",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@types/nodemailer": "^6.4.13",
+    "@types/nodemailer": "^6.4.14",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-scroll": "^1.8.10",
