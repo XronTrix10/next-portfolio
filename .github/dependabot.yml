@@ -12,7 +12,7 @@ updates:
       interval: "weekly"
       day: "sunday"
       time: "16:00"
-    target-branch: "main"
+    target-branch: "dev"
     commit-message:
       prefix: "bot-commit-"
       include: "scope"
