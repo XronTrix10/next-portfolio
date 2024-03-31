@@ -1,5 +1,5 @@
 import ProjectsClient from "./Projects-Client";
-import fetchRepoData from "../../server/fetch-repodata";
+import fetchRepoData from "@/src/server/fetch-repodata";
 import { Suspense } from "react";
 
 const Projects = async () => {

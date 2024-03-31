@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { projects } from "../../server/fetch-repodata";
-import Loading from "../../components/loaders/ProjectLoader";
+import Loading from "../../loaders/ProjectLoader";
+import { projects } from "@/src/server/fetch-repodata";
 
 type RepositoryData = {
   name: string;

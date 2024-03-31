@@ -3,10 +3,10 @@
 import z from "zod";
 import { FormEvent } from "react";
 import { motion } from "framer-motion";
-import { sendMail } from "../lib/mail";
-import { toast } from "../components/ui/ReactToast";
 import { useInView } from "react-intersection-observer";
-import { getContactFormHtml } from "../lib/template/contact-form";
+import { toast } from "../ui/ReactToast";
+import { sendMail } from "@/src/lib/mail";
+import { getContactFormHtml } from "@/src/lib/template/contact-form";
 
 function Contact() {
   const [ref, inView] = useInView({

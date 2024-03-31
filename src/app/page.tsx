@@ -1,10 +1,10 @@
-import About from "../sections/About";
-import Certificates from "../sections/Certificates";
-import Contact from "../sections/Contact";
-import Hero from "../sections/Hero";
+import About from "../components/sections/About";
+import Certificates from "../components/sections/Certificates";
+import Contact from "../components/sections/Contact";
+import Hero from "../components/sections/Hero";
 import ScrollButton from "../components/ui/ScrollButton";
-import Skills from "../sections/Skills";
-import Projects from "../sections/Projects/Projects";
+import Skills from "../components/sections/Skills";
+import Projects from "../components/sections/Projects/Projects";
 import Navbar from "../components/Navbar";
 
 export default function Home() {
@@ -19,7 +19,6 @@ export default function Home() {
       <Projects />
       <Certificates />
       <Contact />
-
     </main>
   );
 }
