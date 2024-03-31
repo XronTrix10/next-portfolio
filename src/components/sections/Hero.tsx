@@ -45,8 +45,7 @@ function Hero() {
           className="my-7"
         >
           <h4 className="md:text-lg 2xl:text-xl mb-12">
-            I am a self learner, resolute, security enthusiast, script kiddie,
-            coder and technology lover
+            I am a self learner, resolute, tech enthusiast and passionate developer. I love doing things differently.
           </h4>
         </motion.div>
         <motion.div
