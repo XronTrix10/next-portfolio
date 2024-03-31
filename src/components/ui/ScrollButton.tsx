@@ -25,7 +25,7 @@ export default function ScrollButton() {
   }, [showScroll]);
 
   return (
-    <div className="fixed bottom-6 right-6 z-20" id="scrollbtn">
+    <div className="fixed bottom-6 right-6 z-50" id="scrollbtn">
       {showScroll && (
         <button
           onClick={scrollToTop}
