@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Navbar from "@/src/components/Navbar";
+import Navbar from "@/src/components/navbar/Navbar";
 import { Star, GitFork } from "lucide-react";
 
 const loading = () => {

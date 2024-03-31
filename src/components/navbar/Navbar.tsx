@@ -1,10 +1,10 @@
 "use client";
 import React, { useLayoutEffect, useState } from "react";
 import Image from "next/image";
-import { MoboNav } from "./ui/nav-items/MoboNav";
-import CustomLink from "./ui/nav-items/CustomLink";
+import { MoboNav } from "./MoboNav";
+import CustomLink from "./CustomLink";
 import { Link } from "react-scroll";
-import { navItems } from "./ui/nav-items/MoboNav";
+import { navItems } from "./MoboNav";
 
 const Navbar = (props: { land: string }) => {
   const [navbarBg, setNavbarBg] = useState(false);
