@@ -76,9 +76,9 @@ function Skills() {
           {skills.map((skill, index) => (
             <div
               key={index}
-              className={`flex mx-auto items-center bg-[#18181886] h-10 rounded-full`}
+              className={`flex mx-auto items-center bg-[#ffffff25] h-10 md:h-14 rounded-full`}
             >
-              <div className="h-12 w-12 md:h-20 md:w-20 group rounded-full border border-gray-600 bg-white grid place-items-center">
+              <div className="h-14 w-14 md:h-20 md:w-20 group rounded-full border border-gray-600 bg-white grid place-items-center">
                 <img
                   src={skill.logo}
                   alt={skill.title}
@@ -86,19 +86,19 @@ function Skills() {
                 />
                 {skill.confidence === 0 ? (
                   <Loader
-                    className="absolute hidden group-hover:flex text-gray-700 duration-200"
+                    className="absolute hidden group-hover:flex text-gray-700 duration-500"
                     size={40}
                     strokeWidth={2.4}
                   />
                 ) : (
                   <CheckCircle
-                    className="absolute hidden group-hover:flex text-gray-700 duration-200"
+                    className="absolute hidden group-hover:flex text-gray-700 duration-500"
                     size={40}
                     strokeWidth={2.4}
                   />
                 )}
               </div>
-              <div className="h-6 md:h-16 rounded-lg  flex justify-center items-center ml-2 mr-5">
+              <div className="rounded-lg  flex justify-center items-center ml-2 mr-3 md:mr-5">
                 <h6 className="text-sm md:text-lg">{skill.title}</h6>
               </div>
             </div>
