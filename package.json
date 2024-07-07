@@ -18,7 +18,7 @@
     "googleapis": "^140.0.1",
     "lucide-react": "^0.396.0",
     "next": "14.2.4",
-    "nodemailer": "^6.9.13",
+    "nodemailer": "^6.9.14",
     "react": "^18",
     "react-dom": "^18",
     "react-intersection-observer": "^9.10.2",
