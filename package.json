@@ -21,7 +21,7 @@
     "nodemailer": "^6.9.14",
     "react": "^18",
     "react-dom": "^18",
-    "react-intersection-observer": "^9.10.2",
+    "react-intersection-observer": "^9.13.0",
     "react-scroll": "^1.9.0",
     "react-toastify": "^10.0.5",
     "showdown": "^2.1.0",
