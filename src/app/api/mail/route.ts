@@ -53,3 +53,25 @@ export const POST = async (req: NextRequest) => {
     }
   );
 };
+
+export const GET = async (request: Request) => {
+  return new Response("Mail API", {
+    status: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    },
+  });
+};
+
+export const OPTIONS = async (request: Request) => {
+  return new Response("Mail API OPTIONS", {
+    status: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    },
+  });
+};
