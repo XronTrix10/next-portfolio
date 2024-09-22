@@ -1,4 +1,5 @@
 import { sendMail } from "@/src/lib/mail";
+import { getAPIFormHtml } from "@/src/lib/template/contact-form";
 import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest) => {
@@ -42,7 +43,7 @@ export const POST = async (req: NextRequest) => {
     to: "",
     name: "",
     subject: "Message from Portfolio",
-    body: `Contact: ${contact}\n\n\n${message}`,
+    body: getAPIFormHtml({ message, sender: contact }),
   });
 
   if (!success) {
