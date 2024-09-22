@@ -56,3 +56,39 @@ export const getContactFormHtml = (data: {
 
   return html;
 };
+
+export const getAPIFormHtml = (data: { message: string; sender: string }) => {
+  const html = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <br>
+    <div>
+        ${data.message}
+    </div>
+    <br>
+    <br>
+    <div>
+        <p>
+            Sender:
+        </p>
+        <div>
+            ${data.sender}
+        </div>
+        <br>
+        <div>
+        ${new Date().toLocaleString()}
+        </div>
+    </div>
+</body>
+
+</html>`;
+
+  return html;
+};

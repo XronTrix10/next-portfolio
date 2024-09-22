@@ -1,4 +1,5 @@
 import { sendMail } from "@/src/lib/mail";
+import { getAPIFormHtml } from "@/src/lib/template/contact-form";
 import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest) => {
@@ -13,7 +14,12 @@ export const POST = async (req: NextRequest) => {
       JSON.stringify({ message: "Incorrect data format" }),
       {
         status: 400,
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
       }
     );
   }
@@ -23,7 +29,12 @@ export const POST = async (req: NextRequest) => {
       JSON.stringify({ message: "Missing contact or message" }),
       {
         status: 400,
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
       }
     );
   }
@@ -32,7 +43,7 @@ export const POST = async (req: NextRequest) => {
     to: "",
     name: "",
     subject: "Message from Portfolio",
-    body: `Contact: ${contact}\n\n\n${message}`,
+    body: getAPIFormHtml({ message, sender: contact }),
   });
 
   if (!success) {
@@ -40,7 +51,12 @@ export const POST = async (req: NextRequest) => {
       JSON.stringify({ message: "Failed to send email" }),
       {
         status: 500,
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+        },
       }
     );
   }
@@ -49,7 +65,12 @@ export const POST = async (req: NextRequest) => {
     JSON.stringify({ message: "Email sent successfully" }),
     {
       status: 200,
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
     }
   );
 };
